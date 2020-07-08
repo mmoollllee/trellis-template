@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a891a437419dcdde3a72f0d80522a765",
+    "content-hash": "208d374b97b60acf75d68015a4643e1a",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -435,27 +435,34 @@
         },
         {
             "name": "oscarotero/env",
-            "version": "v1.2.0",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/env.git",
-                "reference": "4ab45ce5c1f2c62549208426bfa20a3d5fa008c6"
+                "reference": "af3fe9677f4609f387abc53efb16a9a01594db8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/env/zipball/4ab45ce5c1f2c62549208426bfa20a3d5fa008c6",
-                "reference": "4ab45ce5c1f2c62549208426bfa20a3d5fa008c6",
+                "url": "https://api.github.com/repos/oscarotero/env/zipball/af3fe9677f4609f387abc53efb16a9a01594db8e",
+                "reference": "af3fe9677f4609f387abc53efb16a9a01594db8e",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
-                "php": ">=5.2"
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpunit/phpunit": "^7.0"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Env": "src/"
-                }
+                "psr-4": {
+                    "Env\\": "src/"
+                },
+                "files": [
+                    "src/env_function.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -474,7 +481,7 @@
             "keywords": [
                 "env"
             ],
-            "time": "2019-04-03T18:28:43+00:00"
+            "time": "2020-06-03T21:16:26+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -532,18 +539,72 @@
             "time": "2020-03-21T18:07:53+00:00"
         },
         {
-            "name": "pimple/pimple",
-            "version": "v3.3.0",
+            "name": "roots/bedrock-autoloader",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/silexphp/Pimple.git",
-                "reference": "e55d12f9d6a0e7f9c85992b73df1267f46279930"
+                "url": "https://github.com/roots/bedrock-autoloader.git",
+                "reference": "885f2a5c425d82dfd811ef4f13ab8f5bcc89cd70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/e55d12f9d6a0e7f9c85992b73df1267f46279930",
-                "reference": "e55d12f9d6a0e7f9c85992b73df1267f46279930",
+                "url": "https://api.github.com/repos/roots/bedrock-autoloader/zipball/885f2a5c425d82dfd811ef4f13ab8f5bcc89cd70",
+                "reference": "885f2a5c425d82dfd811ef4f13ab8f5bcc89cd70",
                 "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Roots\\Bedrock\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nick Fox",
+                    "email": "nick@foxaii.com",
+                    "homepage": "https://github.com/foxaii"
+                },
+                {
+                    "name": "Scott Walkinshaw",
+                    "email": "scott.walkinshaw@gmail.com",
+                    "homepage": "https://github.com/swalkinshaw"
+                },
+                {
+                    "name": "Austin Pray",
+                    "email": "austin@austinpray.com",
+                    "homepage": "https://github.com/austinpray"
+                }
+            ],
+            "description": "An autoloader that enables standard plugins to be required just like must-use plugins",
+            "keywords": [
+                "autoloader",
+                "bedrock",
+                "mu-plugin",
+                "must-use",
+                "plugin",
+                "wordpress"
+            ],
+            "time": "2020-05-18T04:43:20+00:00"
+        },
+        {
+            "name": "roots/wordpress",
+            "version": "5.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WordPress/WordPress.git",
+                "reference": "5.4.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WordPress/WordPress/zipball/5.4.1",
+                "reference": "5.4.1"
             },
             "require": {
                 "php": "^7.2.5",
@@ -579,7 +640,7 @@
                 "container",
                 "dependency injection"
             ],
-            "time": "2020-03-03T09:12:48+00:00"
+            "time": "2020-04-29T18:50:02+00:00"
         },
         {
             "name": "pivvenit/acf-pro-installer",
@@ -1842,16 +1903,18 @@
             "homepage": "https://wordpress.org/plugins/wp-fail2ban-logging/"
         },
         {
-            "name": "wpackagist-plugin/wp-nested-pages",
-            "version": "3.1.9",
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.17.0",
             "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-nested-pages/",
-                "reference": "tags/3.1.9"
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-nested-pages.3.1.9.zip"
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
+                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
+                "shasum": ""
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -1867,30 +1930,57 @@
                 "url": "https://plugins.svn.wordpress.org/wp-scss/",
                 "reference": "tags/1.2.5"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-scss.1.2.5.zip"
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.17-dev"
+                }
             },
             "require": {
                 "composer/installers": "~1.0"
             },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-scss/"
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2020-05-12T16:14:59+00:00"
         },
         {
-            "name": "wpackagist-plugin/wp-statistics",
-            "version": "12.6.13",
+            "name": "vlucas/phpdotenv",
+            "version": "v4.1.5",
             "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-statistics/",
-                "reference": "tags/12.6.13"
+                "type": "git",
+                "url": "https://github.com/vlucas/phpdotenv.git",
+                "reference": "539bb6927c101a5605d31d11a2d17185a2ce2bf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-statistics.12.6.13.zip"
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/539bb6927c101a5605d31d11a2d17185a2ce2bf1",
+                "reference": "539bb6927c101a5605d31d11a2d17185a2ce2bf1",
+                "shasum": ""
             },
             "require": {
-                "composer/installers": "~1.0"
+                "php": "^5.5.9 || ^7.0 || ^8.0",
+                "phpoption/phpoption": "^1.7.2",
+                "symfony/polyfill-ctype": "^1.9"
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wp-statistics/"
@@ -1910,8 +2000,29 @@
             "require": {
                 "composer/installers": "~1.0"
             },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-super-cache/"
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com",
+                    "homepage": "https://gjcampbell.co.uk/"
+                },
+                {
+                    "name": "Vance Lucas",
+                    "email": "vance@vancelucas.com",
+                    "homepage": "https://vancelucas.com/"
+                }
+            ],
+            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
+            "keywords": [
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "time": "2020-05-02T14:08:57+00:00"
         }
     ],
     "packages-dev": [
@@ -1921,12 +2032,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "81541a731da2f245a08666de73169cb5da7ac573"
+                "reference": "885e8b1e0bc2096989fd20938342e407e8045186"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/81541a731da2f245a08666de73169cb5da7ac573",
-                "reference": "81541a731da2f245a08666de73169cb5da7ac573",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/885e8b1e0bc2096989fd20938342e407e8045186",
+                "reference": "885e8b1e0bc2096989fd20938342e407e8045186",
                 "shasum": ""
             },
             "conflict": {
@@ -1939,6 +2050,8 @@
                 "asymmetricrypt/asymmetricrypt": ">=0,<9.9.99",
                 "aws/aws-sdk-php": ">=3,<3.2.1",
                 "bagisto/bagisto": "<0.1.5",
+                "barrelstrength/sprout-base-email": "<1.2.7",
+                "barrelstrength/sprout-forms": "<3.9",
                 "bolt/bolt": "<3.6.10",
                 "brightlocal/phpwhois": "<=4.2.5",
                 "buddypress/buddypress": "<5.1.2",
@@ -2016,6 +2129,7 @@
                 "magento/product-community-edition": ">=2,<2.2.10|>=2.3,<2.3.2-p.2",
                 "monolog/monolog": ">=1.8,<1.12",
                 "namshi/jose": "<2.2",
+                "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
                 "onelogin/php-saml": "<2.10.4",
                 "oneup/uploader-bundle": "<1.9.3|>=2,<2.1.5",
                 "openid/php-openid": "<2.3",
@@ -2070,7 +2184,7 @@
                 "socalnick/scn-social-auth": "<1.15.2",
                 "spoonity/tcpdf": "<6.2.22",
                 "squizlabs/php_codesniffer": ">=1,<2.8.1|>=3,<3.0.1",
-                "ssddanbrown/bookstack": "<0.25.3",
+                "ssddanbrown/bookstack": "<0.29.2",
                 "stormpath/sdk": ">=0,<9.9.99",
                 "studio-42/elfinder": "<2.1.49",
                 "swiftmailer/swiftmailer": ">=4,<5.4.5",
@@ -2108,6 +2222,7 @@
                 "symfony/var-exporter": ">=4.2,<4.2.12|>=4.3,<4.3.8",
                 "symfony/web-profiler-bundle": ">=2,<2.3.19|>=2.4,<2.4.9|>=2.5,<2.5.4",
                 "symfony/yaml": ">=2,<2.0.22|>=2.1,<2.1.7",
+                "t3g/svg-sanitizer": "<1.0.3",
                 "tecnickcom/tcpdf": "<6.2.22",
                 "thelia/backoffice-default-template": ">=2.1,<2.1.2",
                 "thelia/thelia": ">=2.1-beta.1,<2.1.3",
@@ -2115,8 +2230,8 @@
                 "titon/framework": ">=0,<9.9.99",
                 "truckersmp/phpwhois": "<=4.3.1",
                 "twig/twig": "<1.38|>=2,<2.7",
-                "typo3/cms": ">=6.2,<6.2.30|>=7,<7.6.32|>=8,<8.7.30|>=9,<9.5.12|>=10,<10.2.1",
-                "typo3/cms-core": ">=8,<8.7.30|>=9,<9.5.12|>=10,<10.2.1",
+                "typo3/cms": ">=6.2,<6.2.30|>=7,<7.6.32|>=8,<8.7.30|>=9,<9.5.17|>=10,<10.4.2",
+                "typo3/cms-core": ">=8,<8.7.30|>=9,<9.5.17|>=10,<10.4.2",
                 "typo3/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.16|>=3,<3.0.10|>=3.1,<3.1.7|>=3.2,<3.2.7|>=3.3,<3.3.5",
                 "typo3/neos": ">=1.1,<1.1.3|>=1.2,<1.2.13|>=2,<2.0.4",
                 "typo3/phar-stream-wrapper": ">=1,<2.1.1|>=3,<3.1.1",
@@ -2179,7 +2294,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2020-04-23T00:01:30+00:00"
+            "time": "2020-05-16T00:00:31+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
