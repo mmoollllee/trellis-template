@@ -53,29 +53,33 @@
 ### Updates
 
 To update Wordpress:
-    ```sh
-    $ composer require johnpbloch/wordpress 5.2.x
-    cd ../trellis && vagrant ssh
-    $ wp core update-db
-    ```
+
+```sh
+$ composer require johnpbloch/wordpress 5.2.x
+cd ../trellis && vagrant ssh
+$ wp core update-db
+```
 
 Update Plugins:
-    ```sh
-    $ composer update
-    ```
+
+```sh
+$ composer update
+```
     
 Update Trellis:
-    ```sh
-    $ git fetch trellis master
-    $ git merge -X subtree=trellis/ --squash trellis/master
-    $ git commit -m "Update trellis from trellis/master"
-    ```
+
+```sh
+$ git fetch trellis master
+$ git merge -X subtree=trellis/ --squash trellis/master
+$ git commit -m "Update trellis from trellis/master"
+```
     
 To update this repo from current [Bedrock](https://github.com/roots/bedrock):
-    ```sh
-    $ git remote add -f bedrock https://github.com/roots/bedrock.git
-    $ git merge --no-commit --allow-unrelated-histories bedrock/master
-    ```
+
+```sh
+$ git remote add -f bedrock https://github.com/roots/bedrock.git
+$ git merge --no-commit --allow-unrelated-histories bedrock/master
+```
 
 ## Documentation
 
