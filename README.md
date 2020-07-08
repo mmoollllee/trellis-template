@@ -1,21 +1,24 @@
 ## Installation
 
-1. Clone [Trellis]()
+1. Create empty repository on GitHub and clone it to your local machine. Add a readme or something, because it should have one commit for the further steps.
+2. Add [Trellis](https://github.com/roots/trellis) as subtree
     ```sh
-    $ mkdir domain.tld && cd domain.tld
-    $ git clone --depth=1 git@github.com:roots/trellis.git && rm -rf trellis/.git
+    $ git remote add trellis https://github.com/roots/trellis.git
+    $ git fetch trellis
+    $ git read-tree --prefix=trellis/ -u trellis/master
+    $ git commit -m "add trellis subtree"
     ```
-2. Install [Bedrock Site Template](https://github.com/mmoollllee/site-template):
+2. Add [this repo](https://github.com/mmoollllee/trellis-template) as sub-tree:
     ```sh
-    $ git clone https://github.com/mmoollllee/site-template.git site  && cd site && rm -rf .git
+    $ git remote add trellis-template git@github.com:mmoollllee/trellis-template.git
+    $ git fetch trellis-template
+    $ git read-tree --prefix=site/ -u trellis-template/master
+    ```
+3. Add `.env`. Actually get's overwritten when running trellis, but we need it for ACF_PRO_KEY to run Composer Install. See `composer.json` for packages and install them.
+    ```sh
     $ cp .env.example .env && code .env
-    ```
-    Edit .env
-    Actually get's overwritten if used with Trellis, but we need it for ACF_PRO_KEY to run Composer Install. Edit composer.json for needed packages now.
-    ```sh
     $ composer install
     ```
-3. Create Readme File with a "Log"
 4. Configure Local Domain in `trellis/group_vars/development/wordpress_sites.yml` and add following
     ```
     site_title: Example
@@ -31,26 +34,20 @@
     $ SKIP_GALAXY=true ANSIBLE_TAGS=wordpress vagrant reload --provision
     $ vagrant hostmanager
     ```
-    For NFS Catalina fix edit '/etc/exports' and add '/System/Volumes/Data/'
-7. Vagrant SSH:
-    ```sh
-    $ vagrant ssh
-    $ sh /srv/www/example.com/current/scripts/wp-reset-options.sh
-8. Deploy with [Bedrock Deployer](https://github.com/mmoollllee/bedrock-deployer):
+7. Deploy with [Bedrock Deployer](https://github.com/mmoollllee/bedrock-deployer):
     1. Create GitHub Repo
     2. Setup Plesk Environment (bin/bash, add SSH-Key)
-    3. SSH into Webserver, create SSH key and add pub key to [GitHub Repo Deploy Keys](https://github.com/mmoollllee/site-template/settings/keys)
-    ```sh
-    $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-    4. Edit deploy.php
-    5. Change Admin PW
+    3. Allow fingerprint by connectin to Environment via SSH.
+    3. Create SSH key on Webserver and add pub key to GitHub Repo Deploy Keys
+    4. Setup deploy.php
+    5. Change Wordpress Admin PW
     6. Run
     ```sh
-    $ dep deploy (production)
+    $ dep deploy <environemt>
     ```
     7. Make changes on stage and ...
     ```sh
-    $ dep pull (production)
+    $ dep pull <environemt>
     ```
 
 
@@ -59,6 +56,7 @@
 To update Wordpress:
     ```sh
     $ composer require johnpbloch/wordpress 5.2.x
+    cd ../trellis && vagrant ssh
     $ wp core update-db
     ```
 
@@ -66,11 +64,19 @@ Update Plugins:
     ```sh
     $ composer update
     ```
+    
+Update Trellis:
+    ```sh
+    $ git fetch trellis master
+    $ git merge -X subtree=trellis/ --squash trellis/master
+    $ git commit -m "Update trellis from trellis/master"
+    ```
 
 ## Documentation
 
 Bedrock documentation is available at [https://roots.io/bedrock/docs/](https://roots.io/bedrock/docs/).
 Good Guide is available at [https://css-tricks.com/intro-bedrock-wordpress/](https://css-tricks.com/intro-bedrock-wordpress/).
+Git Subtree Trellis Workflow by [chrisknightindustries.com/2015/24/11/git-subtrees-for-trellis-workflow.html](http://chrisknightindustries.com/2015/24/11/git-subtrees-for-trellis-workflow.html)
 
 ## Contributing
 
@@ -91,12 +97,3 @@ Keep track of development and community news.
 * Read and subscribe to the [Roots Blog](https://roots.io/blog/)
 * Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
 * Listen to the [Roots Radio podcast](https://roots.io/podcast/)
-
-
-## ToDo
-
-* [Trellis Deployment Workflow](https://github.com/hamedb89/trellis-db-push-and-pull) [Docs](https://roots.io/trellis/docs/deploys/)
-* Write own file-renaming-on-upload Plugin
-* Add other Plugins too?
-  * Mail project
-  * Relevanssi
