@@ -16,7 +16,7 @@
     ```
 3. Add `.env`. Actually get's overwritten when running trellis, but we need it for ACF_PRO_KEY to run Composer Install. See `composer.json` for packages and install them.
     ```sh
-    $ cp .env.example .env && code .env
+    $ cd site && cp .env.example .env && code .env
     $ composer install
     ```
 4. Configure Local Domain in `trellis/group_vars/development/wordpress_sites.yml` and add following
@@ -75,8 +75,10 @@ Update Trellis:
 ## Documentation
 
 Bedrock documentation is available at [https://roots.io/bedrock/docs/](https://roots.io/bedrock/docs/).
+
 Good Guide is available at [https://css-tricks.com/intro-bedrock-wordpress/](https://css-tricks.com/intro-bedrock-wordpress/).
-Git Subtree Trellis Workflow by [chrisknightindustries.com/2015/24/11/git-subtrees-for-trellis-workflow.html](http://chrisknightindustries.com/2015/24/11/git-subtrees-for-trellis-workflow.html)
+
+Git Subtree Trellis Workflow by [chrisknightindustries.com/2015/24/11/git-subtrees-for-trellis-workflow.html](http://chrisknightindustries.com/2015/24/11/git-subtrees-for-trellis-workflow.html).
 
 ## Contributing
 

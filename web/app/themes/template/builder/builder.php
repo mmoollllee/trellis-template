@@ -15,7 +15,7 @@
 add_action( 'admin_enqueue_scripts', 'mg_enqueue_builder' );
 
 
-function builder($args) {
+function builder($args = false) {
 	$defaults = array (
 		"label" => "builder",
 		"post_id" => false,
