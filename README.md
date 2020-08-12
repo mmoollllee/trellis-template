@@ -3,16 +3,15 @@
 1. Create empty repository on GitHub and clone it to your local machine. Add a readme or something, because it should have one commit for the further steps.
 2. Add [Trellis](https://github.com/roots/trellis) as subtree
     ```sh
-    $ git remote add trellis https://github.com/roots/trellis.git
-    $ git fetch trellis
+    $ git remote add -f trellis https://github.com/roots/trellis.git
     $ git read-tree --prefix=trellis/ -u trellis/master
     $ git commit -m "add trellis subtree"
     ```
 2. Add [this repo](https://github.com/mmoollllee/trellis-template) as sub-tree:
     ```sh
-    $ git remote add trellis-template git@github.com:mmoollllee/trellis-template.git
-    $ git fetch trellis-template
+    $ git remote add -f trellis-template git@github.com:mmoollllee/trellis-template.git
     $ git read-tree --prefix=site/ -u trellis-template/master
+    $ git commit -m "add trellis-template subtree"
     ```
 3. Add `.env`. Actually get's overwritten when running trellis, but we need it for ACF_PRO_KEY to run Composer Install. See `composer.json` for packages and install them.
     ```sh
@@ -54,23 +53,33 @@
 ### Updates
 
 To update Wordpress:
-    ```sh
-    $ composer require johnpbloch/wordpress 5.2.x
-    cd ../trellis && vagrant ssh
-    $ wp core update-db
-    ```
+
+```sh
+$ composer require johnpbloch/wordpress 5.2.x
+cd ../trellis && vagrant ssh
+$ wp core update-db
+```
 
 Update Plugins:
-    ```sh
-    $ composer update
-    ```
+
+```sh
+$ composer update
+```
     
 Update Trellis:
-    ```sh
-    $ git fetch trellis master
-    $ git merge -X subtree=trellis/ --squash trellis/master
-    $ git commit -m "Update trellis from trellis/master"
-    ```
+
+```sh
+$ git fetch trellis master
+$ git merge -X subtree=trellis/ --squash trellis/master
+$ git commit -m "Update trellis from trellis/master"
+```
+    
+To update this repo from current [Bedrock](https://github.com/roots/bedrock):
+
+```sh
+$ git remote add -f bedrock https://github.com/roots/bedrock.git
+$ git merge --no-commit --allow-unrelated-histories bedrock/master
+```
 
 ## Documentation
 
