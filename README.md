@@ -81,6 +81,12 @@ $ git remote add -f bedrock https://github.com/roots/bedrock.git
 $ git merge --no-commit --allow-unrelated-histories bedrock/master
 ```
 
+To update your repo from this repo
+```sh
+$ git fetch trellis-template
+$ git merge -X subtree=site/ --squash --no-commit --allow-unrelated-histories trellis-template/master
+```
+
 ## Documentation
 
 Bedrock documentation is available at [https://roots.io/bedrock/docs/](https://roots.io/bedrock/docs/).
