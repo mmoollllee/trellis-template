@@ -1,18 +1,14 @@
 <?php
 
-	function mg_enqueue_builder() {
-			wp_enqueue_script( 'mg_arrive', get_template_directory_uri() . '/builder/arrive.min.js' );
-			wp_enqueue_script( 'mg_builder_script', get_template_directory_uri() . '/builder/builder.js' );
-			wp_register_style( 'mg_builder_style', get_template_directory_uri() . '/builder/builder.css', false );
-			wp_enqueue_style( 'mg_builder_style' );
-//        if (current_user_can('administrator')) { }
-        if (!(current_user_can('administrator'))) {
-	        wp_register_style( 'mg_builder_restrict', get_template_directory_uri() . '/builder/builder-restrict.css', false );
-					wp_enqueue_script( 'mg_builder_script_restrict', get_template_directory_uri() . '/builder/builder-restrict.js' );
-        	wp_enqueue_style( 'mg_builder_restrict' );
-        }
+add_action( 'admin_enqueue_scripts', function () {
+	wp_enqueue_script( 'mg_arrive', get_template_directory_uri() . '/builder/js/arrive.min.js' );
+	wp_enqueue_script( 'mg_builder_script', get_template_directory_uri() . '/builder/js/builder.js', ['mg_arrive'] );
+	wp_enqueue_style( 'mg_builder_style', get_template_directory_uri() . '/builder/css/builder.css', false );
+	if (!(current_user_can('administrator'))) {
+		wp_enqueue_script( 'mg_builder_script_restrict', get_template_directory_uri() . '/builder/js/builder-restrict.js', ['mg_arrive', 'mg_builder_script'] );
+		wp_enqueue_style( 'mg_builder_restrict', get_template_directory_uri() . '/builder/css/builder-restrict.css', false );
 	}
-add_action( 'admin_enqueue_scripts', 'mg_enqueue_builder' );
+});
 
 
 function builder($args = false) {
@@ -23,39 +19,62 @@ function builder($args = false) {
 	);
 	$args = wp_parse_args( $args, $defaults );
 
-	$post_id = apply_filters('acf/get_post_id', $args['post_id'] );
 	$return = "";
 	$hierarchie = 0;
-	$last_hierarchie = -1;
+	$hierarchie_prev = -1;
 	$close = array();
-	$loopin = false; $loopout = false;
 
 	if( have_rows($args['label'], $args['post_id']) ):
 		while ( have_rows($args['label'], $args['post_id']) ) : the_row();
 
-			$hierarchie_aktuell = get_sub_field("hierarchie");
-			if($hierarchie_aktuell <= $last_hierarchie) {
+			$hierarchie = get_sub_field("hierarchie");
+			if($hierarchie <= $hierarchie_prev) {
 				$i = 0;
-				while ( $hierarchie_aktuell <= $last_hierarchie) {
-
-					if ( $i == 1 ) {
-						$loopin = false; $loopout = false;
+				while ( $hierarchie <= $hierarchie_prev) {
+					if(isset($close[$hierarchie_prev])) {
+						$return .= "\n".$close[$hierarchie_prev]."\n";
+						$close[$hierarchie_prev] = "";
 					}
-					if(isset($close[$last_hierarchie])) {
-						$return .= "\n".$close[$last_hierarchie]."\n";
-						$close[$last_hierarchie] = "";
-					}
-					$last_hierarchie--;
+					$hierarchie_prev--;
 					$i++;
 				}
 			}
-			$hierarchie = get_sub_field("hierarchie");
 
 			$layout = explode("--", get_row_layout());
 
 			require('templates/'.$layout[0].'.php' );
 
-			$last_hierarchie = $hierarchie;
+			$template_parts = preg_split( '/(<!--content-->|<!--childs-->)/', $template);
+			preg_match_all( '/(<!--content-->)|(<!--childs-->)/', $template, $matches, PREG_PATTERN_ORDER);
+		
+			$close[$hierarchie] = '';
+		
+			$return .= $template_parts[0];
+		
+			if( isset($matches[0][0]) && isset($matches[0][1])) {
+		
+				if($matches[0][0] == '<!--content-->' && $matches[0][1] == '<!--childs-->') {
+		
+					$return .= $content;
+					$return .= $template_parts[1];
+					$close[$hierarchie] .= $template_parts[2];
+		
+				} else if($matches[0][0] == '<!--childs-->' && $matches[0][1] == '<!--content-->') {
+		
+					$close[$hierarchie] .= $template_parts[1];
+					$close[$hierarchie] .= $content;
+					$close[$hierarchie] .= $template_parts[2];
+		
+				}
+			} else {
+		
+				$return .= $content;
+				if ( isset($template_parts[1]) )
+					$close[$hierarchie] .= $template_parts[1];
+		
+			}
+			$hierarchie_prev = $hierarchie;
+
 		endwhile;
 
 		$return .= "<!-- last loop-->";
@@ -66,14 +85,6 @@ function builder($args = false) {
 
 	if ($args['print']) { print_r($return); } else { return $return; }
 
-}
-
-function load_template_part($template_name, $part_name=null) {
-    ob_start();
-    get_template_part($template_name, $part_name); // Alternative: include(locate_template('your-template-name.php'));
-    $var = ob_get_contents();
-    ob_end_clean();
-    return $var;
 }
 
 ?>

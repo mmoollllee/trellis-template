@@ -1,7 +1,6 @@
 var didLoadSortable = false;
 
 function adjust(elements, offset, min, max) {
-	console.log("adjust");
     // Initialize parameters
     offset = offset || 0;
     min    = min    || 0;
@@ -60,31 +59,12 @@ jQuery(window).ready(function() {
 
         });
 
-/*    jQuery(document).on("click .acf-fc-popup a", function(e) {
-        if (e.$el && e.$el.attr('data-layout') == "sektion") {
-
-            acf.fields.flexible_content.add("sektion-aside");
-            acf.fields.flexible_content.add("sektion-content");
-        }
-*/
-
-
     setTimeout(function() {
 
         jQuery(".mg_acf_span_title").on("click", function(e) {
             jQuery(this).parent().find(".mg_acf_input_title").focusTextToEnd();;
 
         });
-
-/*        jQuery(".mg_acf_icon").on("click", function(e) {
-            if (jQuery(this).parent().parent().hasClass("-collapsed")) {
-                jQuery(this).parent().parent().removeClass("-collapsed");
-            } else {
-                jQuery(this).parent().parent().addClass("-collapsed");
-            }
-        });
-*/
-
         jQuery("#acf-pagebuilder .values").arrive(".layout", function() {
 
             mg_acf_title_insert(jQuery(this));
@@ -105,6 +85,7 @@ jQuery(window).ready(function() {
 
 
         jQuery(".ui-sortable").on("sortstart", function(event, ui) {
+            console.log("sortabel")
 
             if (!didLoadSortable) {
                 jQuery("#acf-pagebuilder").find(".ui-sortable").sortable("option", "grid", [20, 10]);
@@ -135,7 +116,7 @@ jQuery(window).ready(function() {
             }
         });
 
-    }, 0);
+    }, 100);
 });
 
 
@@ -146,13 +127,16 @@ function mg_acf_title_insert(e) {
 
     e = jQuery(e);
     titleinput = e.find(".title input");
+    if (!titleinput.length) {
+        return false;
+    }
 
     title = titleinput.val();
 
     titlearea = e.find(".acf-fc-layout-handle");
 
-    if (titlearea.find(".mg_acf_input_title").length) {
-        titlearea.find(".mg_acf_input_title").val(title);
+    if (e.find(".mg_acf_input_title").length) {
+        e.find(".mg_acf_input_title").val(title);
     } else {
         jQuery("<div class='mg_acf_top_title_field'><input type='text' class='mg_acf_input_title adjust' value='" + title + "'></div>").insertBefore(titlearea);
 
@@ -185,7 +169,6 @@ function mg_acf_options(e) {
 
 		value.change( function() {
 			i = "data-" + jQuery(this).parents("[data-name]").attr("data-name");
-			console.log(i);
 
 			jQuery(this).parents(".layout").attr(i, jQuery(this).prop( "checked" ) );
 
@@ -216,7 +199,6 @@ function mg_acf_title_change(e) {
     e = jQuery(e);
 
     title = e.val();
-    console.log(title);
 
     e.parents(".layout").find(".mg_acf_input_title").val(title);
 
