@@ -28,3 +28,6 @@ wp-cli.local.yml
 
 # WP Super Cache
 web/app/cache/*
+
+# VS Code
+.vscode

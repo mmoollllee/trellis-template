@@ -4,12 +4,16 @@
 2. Add [Trellis](https://github.com/roots/trellis) as subtree
     ```sh
     $ git remote add -f trellis https://github.com/roots/trellis.git
+    $ git subtree add --prefix trellis trellis master --squash
+    // OR
     $ git read-tree --prefix=trellis/ -u trellis/master
     $ git commit -m "add trellis subtree"
     ```
 2. Add [this repo](https://github.com/mmoollllee/trellis-template) as sub-tree:
     ```sh
     $ git remote add -f trellis-template git@github.com:mmoollllee/trellis-template.git
+    $ git subtree add --prefix site trellis-template master --squash
+    // OR
     $ git read-tree --prefix=site/ -u trellis-template/master
     $ git commit -m "add trellis-template subtree"
     ```
