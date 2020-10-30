@@ -8,7 +8,7 @@ var slideout = new Slideout({
 });
 
 jQuery("#navtoggle").click(function() {
-  if ( jQuery(window).width() >= 990 ) {
+  if ( jQuery(window).width() >= 1200 ) {
     jQuery(this).parent().toggleClass("active");
   } else {
     slideout.toggle();

@@ -1,53 +1,36 @@
-/*
-	<div class="accordion">
-		<div class="item active">
-			<div class="title"></div>
-			<div class="inner">
-			</div>
-		</div>
-		<div class="item">
-			<div class="title"></div>
-			<div class="inner">
-			</div>
-		</div>
-	</div>
-*/
-
-wrapper = jQuery(".accordion");
-
 jQuery(document).ready(function() {
 	
-	jQuery('.accordion .item .inner').each(function() {
-		parent = jQuery(this).parent();
-		if ( !parent.hasClass("active")) {
-			jQuery(this).hide();
+	var wrapper = jQuery(".accordion");
+
+	var hash = window.location.hash;
+	if ( hash ) {
+	  setTimeout(function() {
+			jQuery(hash).toggleClass("active").toggleClass("inactive");
+	  }, 10)
+	};
+
+	wrapper.each(function() {
+		if ( !jQuery(this).hasClass("active")) {
+			jQuery(this).addClass("inactive");
 		}
-	});
+
+		jQuery(this).find('header h2').click(function(){
+
+			parent = jQuery(this).parents('.accordion');
+			
+			if (parent.hasClass("inactive")) {
+				var hash = parent.attr("id");
+				history.pushState({}, '', "#" + hash);
+				scrollto("#" + hash)
+			}
+
+			//Expand or collapse this panel
+			parent.toggleClass("active").toggleClass("inactive");
 	
-/*	wrapper.find(".title").click(function() {
-		parent = jQuery(this).parent();
-		if ( !parent.hasClass("active")) {
-			active = wrapper.find(".active");
-			active.find(".inner").slideToggle();
-			active.removeClass("active");
-			inner = parent.find(".inner");
-			parent.addClass("active");
-			inner.slideToggle();
-		}
+			//Hide the other panels
+			//wrapper.find(".inner").not(jQuery(this).next()).slideUp('fast').parent().removeClass("active");
+	
+		 });
 	});
-*/
 
-  jQuery(document).ready(function() {
-    wrapper.find('.title').click(function(){
-
-      //Expand or collapse this panel
-      jQuery(this).next().slideToggle('fast').parent().toggleClass("active");
-
-      //Hide the other panels
-      //wrapper.find(".inner").not(jQuery(this).next()).slideUp('fast').parent().removeClass("active");
-
-    });
-  });
-
-
-})
+});

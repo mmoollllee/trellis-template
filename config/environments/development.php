@@ -27,6 +27,4 @@ define('DISABLED_PLUGINS', serialize([
     'wp-statistics/wp-statistics.php'
 ]));
 
-define('ENABLED_PLUGINS', serialize([
-    'wp-scss/wp-scss.php'
-]));
+define('ENABLED_PLUGINS', false);

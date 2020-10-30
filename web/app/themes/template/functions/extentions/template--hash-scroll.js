@@ -6,7 +6,7 @@ jQuery(document).ready(function() {
     }
   });
 
-  hash = window.location.hash;
+  var hash = window.location.hash;
   if ( hash ) {
     setTimeout(function() {
           window.scrollTo(0, 0), scrollto(hash)
@@ -16,10 +16,8 @@ jQuery(document).ready(function() {
 
 function scrollto( target ) {
 
-/* ID
-  position = jQuery(target).offset();
-*/
-  position = jQuery("[name='"+target.split("#")[1]+"']").offset();
+  var position = jQuery(target).offset();
+  //position = jQuery("[name='"+target.split("#")[1]+"']").offset();
 
   jQuery(window.opera?'html':'html, body').animate({
     scrollTop : position.top + "px"

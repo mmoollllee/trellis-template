@@ -9,6 +9,7 @@ input[type="email"],
 input[type="date"],
 input[type="tel"],
 input[type="password"],
+input[type="number"],
 textarea {
 	display: block;
 	border: 1px solid #bdc1cc;
@@ -37,12 +38,16 @@ textarea {
 	}
 
 	&:focus {
-		-moz-box-shadow: 0px 1px 10px #eeeeee; -webkit-box-shadow: 0px 1px 10px #eeeeee; box-shadow: 0px 1px 10px #eeeeee
+		border-color: #000;
 	}
 
 	&:focus, &:not(:placeholder-shown) {
 		opacity: 1; border-color: $input-initial;
 	}
+}
+
+input[type="submit"] {
+	cursor: pointer;
 }
 
 select {
@@ -52,17 +57,27 @@ select {
 	height: 2rem;
 }
 
-.wpcf7-acceptance {
-	display: block;
-	padding-left: 1.7em;
-	margin: $input-margin;
+input[type="checkbox"] {
+	background: none;
+	appearance: none;
+	border: 1px solid $input-initial;
+	height: 1.1em;
+	width: 1.1em;
+	margin-left: 0.2rem;
+	margin-right: 0.3rem;
+	padding: .2em;
+	display: inline-block;
+	background-clip: content-box;
+	margin-bottom: -2px;
 
-	input {
-		margin-left: -1.3em !important;
+	&:hover, &:focus, &:checked {
+		border-color: #000;
+	}
+
+	&:checked {
+		background-color: #000;
 	}
 }
-
-input[type="checkbox"] { margin: 0 .5rem}
 
 textarea { min-height: 200px }
 
@@ -70,21 +85,27 @@ textarea { min-height: 200px }
 .wpcf7-not-valid {border-color: $red !important; border-style: dashed !important;}
 
 .screen-reader-response {
-  margin-top: 1rem;
-  border: 1px dashed red;
-  padding: 5px 8px;
-  &:empty {
-    display: none;
-  }
+	display: none;
+
+	&[data-status] {
+		margin-top: 1rem;
+		border: 1px dashed var(--danger, red);
+		padding: 5px 8px;
+		display: block
+	}
+
+	&[data-status="mail_sent"] {
+		border: 1px dashed var(--success, green);
+	}
+
+	&:empty {
+		display: none !important;
+	}
 }
 
 //Hide Labels
-label:not(.browser-style) {
+label:not(.browser-style):not(.mailpoet_checkbox_label):not(.mailpoet_segment_label) {
 	font-size: 0;
-}
-
-.wpcf7-acceptance label {
-	font-size: 1em;
 }
 
 label {
@@ -92,21 +113,89 @@ label {
 	width: 100%
 }
 
+.wpcf7 {
+	max-width: 720px;
+}
+
 .wpcf7-form {
 	display: flex;
-	flex-flow: row wrap;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-right: -10px;
+	margin-left: -10px;
 
 	> * {
 		position: relative;
 		min-height: 1px;
 		padding-right: 10px;
 		padding-left: 10px;
+		flex-basis: 100%;
+
+		@include media-breakpoint-up(md) {
+			flex-basis: 50%;
+		}
 	}
 
-	.privacy {
+	input {
+		max-width: 350px;
+	}
+
+	.message {
+		width: 100%;
+		flex-basis: 100%;
+	}
+
+	label {
+		display: none;
+	}
+
+	.privacy,
+	.mailpoetsignup-x {
 		flex-basis: 0;
 		flex-grow: 1;
 		max-width: 100%;
+
+		.wpcf7-form-control {
+			display: block;
+			padding-left: 1.7em;
+			margin: $input-margin;
+
+			label {
+				display: inline;
+				font-size: inherit;
+			}
+		
+			input {
+				margin-left: -1.3em !important;
+			}
+		}
+	}
+
+	.wpcf7-submit {
+		font-size: .85rem !important;
+		padding: .6rem .9rem !important;
+      border: 1px solid #000 !important;
+      background-color: transparent;
+		margin: 1rem 10px 0 10px;
+		flex-basis: auto;
+		align-self: center;
+
+      &:hover {
+         background-color: #e8e8e8;
+      }
+    
+      @include media-breakpoint-up(md) {
+        font-size: .9rem !important;
+      }
+    
+      @include media-breakpoint-up(lg) {
+        font-size: .95rem !important;
+      }
+	}
+
+	&.sent .wpcf7-submit {
+		color: var(--success);
+		border-color: var(--success) !important;
 	}
 
 .wpcf7-response-output {
@@ -130,4 +219,40 @@ label {
 	font-size: 1rem !important;
 	transform: translateY(1em);
 	display: block;
+}
+
+.mailpoet_form {
+   padding-left: 0 !important;
+   padding-right: 0 !important;
+}
+
+input.mailpoet_text {
+	padding: 12px !important;
+}
+
+input.mailpoet_text,
+label.mailpoet_checkbox_label,
+label.mailpoet_text_label,
+label.mailpoet_segment_label,
+label.mailpoet_select_label,
+input.mailpoet_submit {
+	font-size: .85rem !important;
+ 
+	@include media-breakpoint-up(md) {
+	  font-size: .9rem !important;
+	}
+ 
+	@include media-breakpoint-up(lg) {
+	  font-size: .95rem !important;
+	}
+ }
+
+input.mailpoet_submit {
+	padding: .6rem .9rem !important;
+	border: 1px solid #000 !important;
+	background-color: transparent;
+
+	&:hover {
+		background-color: #e8e8e8;
+	}
 }

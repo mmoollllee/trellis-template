@@ -99,71 +99,48 @@ acf_add_local_field_group(array(
 	'description' => '',
 ));
 
-
-/*
-	Add Kontaktdaten Fields
-*/
-
-acf_add_local_field_group(array(
-	'key' => 'group_5d552291408bf',
-	'title' => 'Kontakdaten',
-	'fields' => array(
-		array(
-			'key' => 'field_5d55229fb5245',
-			'label' => 'Kontaktdaten 1',
-			'name' => 'kontaktdaten_1',
-			'type' => 'wysiwyg',
-			'instructions' => 'Name & Anschrift',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '50',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'tabs' => 'all',
-			'toolbar' => 'basic',
-			'media_upload' => 0,
-			'delay' => 0,
-		),
-		array(
-			'key' => 'field_5d5522cbb5246',
-			'label' => 'Kontaktdaten 2',
-			'name' => 'kontaktdaten_2',
-			'type' => 'wysiwyg',
-			'instructions' => 'Telefon, Fax (wenn nötig) und Email',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '50',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'tabs' => 'all',
-			'toolbar' => 'basic',
-			'media_upload' => 0,
-			'delay' => 0,
-		),
-	),
-	'location' => array(
-		array(
-			array(
-				'param' => 'options_page',
-				'operator' => '==',
-				'value' => 'optionen',
-			),
-		),
-	),
-	'menu_order' => 0,
-	'position' => 'normal',
-	'style' => 'default',
-	'label_placement' => 'top',
-	'instruction_placement' => 'label',
-	'hide_on_screen' => '',
-	'active' => true,
-	'description' => '',
-));
-
 endif;
+
+/**
+ * Add Kontaktdaten Fields
+ */
+$acfbuilder = new StoutLogic\AcfBuilder\FieldsBuilder('kontaktdaten',[
+	'title' => 'Kontaktdaten',
+	'style' => 'default', // or 'seamless'
+	'position' => 'normal',
+]);
+$acfbuilder
+	->addWysiwyg('kontaktdaten_1', [
+		'label' => 'Kontaktdaten 1',
+		'instructions' => 'Name & Anschrift',
+		'media_upload' => 0,
+		'toolbar' => 'basic',
+		'wrapper' => [
+			'width' => '33',
+	  	]
+	])
+	->addWysiwyg('kontaktdaten_2', [
+		'label' => 'Kontaktdaten 2',
+		'instructions' => 'Telefon, Fax (wenn nötig) und Email',
+		'media_upload' => 0,
+		'toolbar' => 'basic',
+		'wrapper' => [
+			'width' => '33'
+	  	]
+	])
+	->addWysiwyg('oeffnungszeiten', [
+		'label' => 'Öffnungszeiten',
+		'instructions' => 'Is klar, oder?',
+		'media_upload' => 0,
+		'toolbar' => 'basic',
+		'wrapper' => [
+			'width' => '34'
+	  	]
+	])
+
+	->setLocation('options_page', '==', 'optionen');
+
+
+add_action('acf/init', function() use ($acfbuilder) {
+   acf_add_local_field_group($acfbuilder->build());
+});

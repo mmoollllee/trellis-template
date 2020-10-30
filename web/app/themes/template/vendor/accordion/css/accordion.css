@@ -1,0 +1,38 @@
+.accordion header h2:after {
+  font-family: icon-font !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  line-height: inherit; }
+
+.accordion {
+  overflow: hidden; }
+  .accordion, .accordion * {
+    transition: .2s border-color, .2s height, .2s opacity, .5s margin; }
+  .accordion header h2 {
+    cursor: pointer; }
+    .accordion header h2:after {
+      content: "\64";
+      margin-left: .4em;
+      bottom: -.2em;
+      font-size: .9em; }
+  .accordion.inactive {
+    border-color: transparent;
+    height: 5em;
+    margin-bottom: 0; }
+    .accordion.inactive div * {
+      opacity: 0; }
+    .accordion.inactive header {
+      opacity: 1; }
+      .accordion.inactive header p {
+        opacity: 0; }
+      .accordion.inactive header h2 {
+        font-size: 1.7rem;
+        opacity: 1; }
+        .accordion.inactive header h2:after {
+          content: "\61"; }

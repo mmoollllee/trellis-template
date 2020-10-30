@@ -20,15 +20,3 @@ img {
 	margin: auto;
 	padding: 0
 }
-
-
-.bg-semired {
-	background: $semired;
-	// main > & { display: flex; }
-	&[class*="box"] { background-clip: content-box; }
-}
-
-.bg-pullup {
-	margin-top: -200px;
-	padding-top: 200px;
-}

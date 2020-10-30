@@ -26,3 +26,13 @@
       .font#{$infix}-110  { font-size: 110% !important; }
    }
  }
+
+ .hide-text {
+    font-size: 0;
+
+    a:hover {
+       border-color: transparent !important
+    }
+ }
+
+.no-wrap { display: inline-block; }

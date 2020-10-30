@@ -10,15 +10,10 @@
 	position: relative;
 }
 
-.menu {
-	a {
-		padding: .5rem;
-		text-transform: uppercase;
+h1 .logo img {
+	max-width: 120px;
+
+	@include media-breakpoint-up(s) {
+		max-width: 150px
 	}
-}
-
-
-// Slideout Icon for Closeing
-.slideout-open #navtoggle:before {
- content:"G"
 }

@@ -13,24 +13,21 @@
 @import "main/utilities/multi-columns";
 @import "main/utilities/overflow";
 @import "main/utilities/font";
+@import "main/utilities/layout";
+@import "main/utilities/flex";
 
 @import "main/extentions/iframe-privacy";
-@import "main/extentions/font";
-@import "main/extentions/layout";
-@import "main/extentions/navigation";
+@import "main/extentions/cookie";
+@import "main/extentions/flickity";
+@import "main/extentions/fancybox";
+@import "main/extentions/icons";
 
+@import "main/blocks";
+@import "main/font-import";
 @import "main/font";
-@import "main/fontspace";
-@import "main/button";
 @import "main/forms";
-@import "main/icons";
 @import "main/layout";
 @import "main/header";
-@import "main/breadcrumb";
+@import "main/navigation";
 @import "main/footer";
-@import "main/accordion";
-@import "main/cookie";
-@import "main/flickity";
-@import "main/tooltip";
-@import "main/fancybox";
 @import "main/table";

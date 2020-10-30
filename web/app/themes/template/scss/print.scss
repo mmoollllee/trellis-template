@@ -1,0 +1,57 @@
+@media print {
+   .page-id-166 {
+      #wrapper > nav,
+      #footer,
+      .wp-block-cover {
+         display: none
+      }
+
+      section.speisekarte {
+         break-after: page;
+         page-break-after: always;
+         border: 1px solid #000;
+         min-height: 100vh;
+         display: flex;
+
+         h2 {
+            font-size: 2rem;
+         }
+
+         > * {
+            margin: auto;
+         }
+
+         footer {
+            display: block
+         }
+      }
+
+      #hinweise {
+         display: none
+      }
+
+      .break-after {
+         break-after: avoid-page !important
+      }
+
+      .accordion {
+         border-color: #000 !important;
+         height: auto !important;
+
+         * {
+            opacity: 1 !important;
+         }
+
+         header {
+            h2 {
+               font-size: 2.2rem;
+               &:after {
+                  content: "" !important;
+               }
+            }
+         }
+
+      }
+      
+   }
+}

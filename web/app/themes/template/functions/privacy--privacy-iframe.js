@@ -8,13 +8,13 @@ jQuery(document).find('iframe[data-src]').each(function() {
     var message = 'Dieser Inhalt wird von <span class="iframe-privacy--source">Vimeo</span> geladen.<br/>Durch das Abspielen des Videos werden Daten wie Ihre IP-Adresse an Vimeo übertragen. Weitere Informationen entnehmen Sie bitte unserer <a href="/datenschutz/" title="Datenschutzerklärung lesen">Datenschutzerklärung</a>.';
   }
 
-  var button = '<a class="button blue confirm" data-icon-right="O" data-src="' + src + '"><span>Inhalte laden</span></a>';
+  var button = '<a class="button blue confirm" data-icon-right="f" data-src="' + src + '"><span>Inhalte laden</span></a>';
 
   if ( src_name == "Vimeo" ) {
     var button = '<a class="confirm play-button" data-icon-left="z" data-src="' + src + '"></a>';
   }
 
-  jQuery(this).attr("data-privacy-iframe","true").wrap( "<div class='iframe-privacy--wrapper'></div>" ).parent().prepend('<div class="iframe-privacy--message">' + button + '<p class="font-80 font-s-90 font-sm-100">' + message + '</p></div>');
+  jQuery(this).attr("data-privacy-iframe","true").wrap( "<div class='iframe-privacy--wrapper'></div>" ).parent().prepend('<div class="iframe-privacy--message">' + button + '<p class="font-80 font-sm-90">' + message + '</p></div>');
 });
 
 jQuery('.iframe-privacy--message a.confirm').click(function() {

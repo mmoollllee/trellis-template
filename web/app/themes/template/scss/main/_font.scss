@@ -1,11 +1,31 @@
-.red {
-  color: $red;
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  padding-top: 1.5rem;
+
+  @include media-breakpoint-up(md) {
+    padding-top: 2rem
+  }
 }
 
-.preis {
-  font-family: ff-duper-web-pro, sans-serif;
-  font-size: 4rem;
+main p:last-child,
+main ul:last-child {
+  padding-bottom: 1rem;
 }
+
+main p:last-child:first-of-type {
+  // padding-bottom: 0;
+  margin: 0
+}
+
+.last-p-p-0 p:last-of-type { margin-bottom: 0 }
+
+.p-last-pb-0 > p:last-child {
+  padding-bottom: 0;
+}
+
+p,h1,h2,h3,h4 { -webkit-hyphens: auto;-moz-hyphens: auto;-ms-hyphens: auto;hyphens: auto;}
+
+main p, main table { line-height: 1.5; margin: 0 0 1em;}
 
 button {
   -webkit-appearance: none;
@@ -20,12 +40,17 @@ button {
 
 #navtoggle { font-size: 2rem; }
 
-.no-wrap { display: inline-block; }
-
-h1 {
+h1, .h1 {
 	font-weight: 400;
-	font-size: 1.8em;
-	text-transform: uppercase;
+	font-size: 1.8rem;
+  
+  @include media-breakpoint-up(s) {
+    font-size: 2.5em;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 4em;
+  }
 
   span:not(:last-of-type):after {
     display: block;
@@ -33,74 +58,99 @@ h1 {
   }
 }
 
-@include media-breakpoint-up(s) {
-  h1 {
-  	font-size: 2.5em;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  h1 {
-  	font-size: 4em;
-  }
-}
-
-h2 {
-  text-transform: uppercase;
-  font-size: 1.5rem;
+h2, .h2 {
+  font-size: 1.8rem;
 	small {
 		font-size: 1rem;
 		font-weight: 300;
 		display: block;
-	}
+  }
+  a {
+    text-decoration: none;
+  }
 }
 
 h3, .h3 {
-  color: $red;
-	text-transform: uppercase;
-	letter-spacing: .05em;
-	display: inline-flex;
-	align-items: center;
+  font-size: 1.2rem;
+  padding-top: 0;
+	// letter-spacing: .05em;
+}
 
-	&:before {
-		content:"";
-		height: 1.5px;
-		width: 70px;
-		background: $red;
-		margin-right: .5em
-	}
+h4, .h4 {
+  font-size: 1em;
+}
+
+p, .wp-block-button__link, input, main ul li, .button {
+  font-size: .85rem;
+
+  @include media-breakpoint-up(md) {
+    font-size: .9rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: .95rem;
+  }
 }
 
 a {
-  font-weight: 400; text-decoration: none !important; color: #000;
-  &:hover { color: $red; }
+  font-weight: 400; color: #000; text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit
   }
 
-.bg-red {
-  h2, .h2, h3, .h3, h4, .h4 {
-    color: #fff;
-    &:before {
-      background: #fff;
-    }
-  }
-  a {
-    color: #fff;
-    &:hover { color: $semired; }
+  &[data-icon-left], &[data-icon-right] {
+    text-decoration: none;
+    font-weight: 300;
   }
 }
 
-.underline {
-	@extend %underline;
+.more-link, .button {
+  padding: .6rem .9rem !important;
+  border: 1px solid #000 !important;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 1rem 0 1rem 0;
+  display: inline-block;
+  text-decoration: none !important;
+
+  &:hover {
+    background-color: #e8e8e8;
+  }
 }
 
-/*
-	thin		font-weight: 260;
-	extra-light font-weight: 280;
-	light		font-weight: 300;
-	regular		font-weight: 400;
-	medium		font-weight: 500;
-	SemiBold	font-weight: 600;
-	bold		font-weight: 700;
-	extrabold	font-weight: 800;
-	black		font-weight: 900;
-*/
+[data-icon-right]:after {
+  margin-left: 0.4em;
+  bottom: -.1em;
+}
+
+[data-icon-left]:before {
+  margin-right: 0.6em;
+  bottom: -.16em;
+}
+
+i[class^="icon-"]:before {
+  bottom: -.16em;
+}
+
+.more-link {
+  padding: .6rem .9rem !important;
+  border: 1px solid #000 !important;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 1rem 0 1rem 0;
+  display: inline-block;
+  text-decoration: none !important;
+
+  &:hover {
+    background-color: #e8e8e8;
+  }
+  
+	&:after {
+		content: "\63";
+		@extend %icon-font-stuff;
+    margin-left: 0.4em;
+    bottom: -.2em;
+	}
+}

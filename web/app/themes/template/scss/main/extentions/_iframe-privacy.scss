@@ -1,16 +1,14 @@
 .iframe-privacy--wrapper {
-  min-height: 200px;
+  min-height: 270px;
   background: rgba(0,0,0,.03);
   position: relative;
   max-width: 100%;
   width: 100%;
-  margin: 2em auto;
+  margin: 0 auto;
 
   iframe {
-    height: 30vw;
-    max-height: 400px;
+    height: 100%;
     width: 100%;
-    min-height: 325px;
   }
 
   .iframe-privacy--message {
@@ -27,8 +25,19 @@
     z-index: 1000;
     text-align: center;
     .iframe-privacy--source { color: $gray-600;}
-    .button { color: #fff;
-      &:hover { color: #fff }
+
+    .button {
+      padding: .6rem .9rem !important;
+      border: 1px solid #000 !important;
+      background-color: transparent;
+      margin: 1rem 0 1rem 0;
+      display: inline-block;
+      text-decoration: none !important;
+      cursor: pointer;
+    
+      &:hover {
+        background-color: #e8e8e8;
+      }
     }
 
     .play-button {
