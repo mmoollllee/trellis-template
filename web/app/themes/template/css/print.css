@@ -1,30 +1,42 @@
 @media print {
-  .page-id-166 #wrapper > nav,
-  .page-id-166 #footer,
-  .page-id-166 .wp-block-cover {
-    display: none; }
-  .page-id-166 section.speisekarte {
-    break-after: page;
-    page-break-after: always;
-    border: 1px solid #000;
-    min-height: 100vh;
-    display: flex; }
-    .page-id-166 section.speisekarte h2 {
-      font-size: 2rem; }
-    .page-id-166 section.speisekarte > * {
-      margin: auto; }
-    .page-id-166 section.speisekarte footer {
-      display: block; }
-  .page-id-166 #hinweise {
-    display: none; }
-  .page-id-166 .break-after {
-    break-after: avoid-page !important; }
-  .page-id-166 .accordion {
-    border-color: #000 !important;
-    height: auto !important; }
-    .page-id-166 .accordion * {
-      opacity: 1 !important; }
-    .page-id-166 .accordion header h2 {
-      font-size: 2.2rem; }
-      .page-id-166 .accordion header h2:after {
-        content: "" !important; } }
+   .page-id-166 #wrapper > nav,
+   .page-id-166 #footer,
+   .page-id-166 .wp-block-cover {
+      display: none;
+   }
+   .page-id-166 section.speisekarte {
+      break-after: page;
+      page-break-after: always;
+      border: 1px solid #000;
+      min-height: 100vh;
+      display: flex;
+   }
+   .page-id-166 section.speisekarte h2 {
+      font-size: 2rem;
+   }
+   .page-id-166 section.speisekarte > * {
+      margin: auto;
+   }
+   .page-id-166 section.speisekarte footer {
+      display: block;
+   }
+   .page-id-166 #hinweise {
+      display: none;
+   }
+   .page-id-166 .break-after {
+      break-after: avoid-page !important;
+   }
+   .page-id-166 .accordion {
+      border-color: #000 !important;
+      height: auto !important;
+   }
+   .page-id-166 .accordion * {
+      opacity: 1 !important;
+   }
+   .page-id-166 .accordion header h2 {
+      font-size: 2.2rem;
+   }
+   .page-id-166 .accordion header h2:after {
+      content: '' !important;
+   }
+}

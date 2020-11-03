@@ -1,27 +1,28 @@
 {
-  "name": "wordpress-template",
-  "version": "1.0.0",
-  "description": "Build Tools for Wordpress Template",
-  "author": "Moritz Graf",
-  "private": false,
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/mmoollllee/trellis-template.git"
-  },
-  "scripts": {
-    "icons": "icon-font-generator icons/svg/*.svg --codepoints icons/codepoints.json --normalize --center -o icons/fonts  --name icon-font --csstp icons/icon-font-template.hbs --csspath scss/main/extentions/_icons.scss --jsonpath icons/icons.json --htmlpath icons/index.html --fontspath /app/themes/template/icons/fonts --height 1000",
-    "sass": "node-sass scss -o css",
-    "sass-accordion": "node-sass vendor/accordion/scss -o vendor/accordion/css",
-    "watch": "node-sass --watch scss -o css",
-    "watch-builder": "node-sass --watch builder/scss -o builder/css",
-    "watch-accordion": "node-sass --watch vendor/accordion/scss -o vendor/accordion/css",
-    "sass-builder": "node-sass builder/scss -o builder/css"
-  },
-  "devDependencies": {
-    "eslint": "^7.11.0",
-    "icon-font-generator": "github:Hammie/icon-font-generator",
-    "node-sass": "^4.14.1",
-    "prettier": "2.1.2"
-  }
+   "name": "wordpress-template",
+   "version": "1.0.0",
+   "description": "Build Tools for Wordpress Template",
+   "author": "Moritz Graf",
+   "private": false,
+   "license": "MIT",
+   "repository": {
+      "type": "git",
+      "url": "git://github.com/mmoollllee/trellis-template.git"
+   },
+   "scripts": {
+      "icons": "icon-font-generator icons/svg/*.svg --codepoints icons/codepoints.json --normalize --center -o icons/fonts  --name icon-font --csstp icons/icon-font-template.hbs --csspath scss/main/extentions/_icons.scss --jsonpath icons/icons.json --htmlpath icons/index.html --fontspath /app/themes/template/icons/fonts --height 1000",
+      "sass": "node-sass scss -o css",
+      "sass-accordion": "node-sass vendor/accordion/scss -o vendor/accordion/css",
+      "watch": "node-sass --watch scss -o css",
+      "watch-builder": "node-sass --watch builder/scss -o builder/css",
+      "watch-accordion": "node-sass --watch vendor/accordion/scss -o vendor/accordion/css",
+      "sass-builder": "node-sass builder/scss -o builder/css"
+   },
+   "devDependencies": {
+      "eslint": "^7.11.0",
+      "icon-font-generator": "github:Hammie/icon-font-generator",
+      "node-sass": "^4.14.1",
+      "prettier": "2.1.2",
+      "@prettier/plugin-php": "^0.15.2"
+   }
 }

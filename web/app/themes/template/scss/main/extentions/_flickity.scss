@@ -1,77 +1,83 @@
 .flickity-enabled {
-	padding: 0;
+   padding: 0;
 
-	[class*="col"] {
-		padding: 0 !important;
-		margin: 0;
-		position: static !important
-	}
+   [class*='col'] {
+      padding: 0 !important;
+      margin: 0;
+      position: static !important;
+   }
 
-	figure {
-		height: 100%;
-		width: 100%;
-		img {
-	  	height: 100%;
-	  	width: 100%;
-	  	object-fit: cover;
-		}
-	}
+   figure {
+      height: 100%;
+      width: 100%;
+      img {
+         height: 100%;
+         width: 100%;
+         object-fit: cover;
+      }
+   }
 }
 
 .flickity-viewport,
 .flickity-slider {
-	height: 100% !important;
+   height: 100% !important;
 }
 
 .flickity-slider {
-	display: flex;
-	position: relative !important;
+   display: flex;
+   position: relative !important;
 }
 
 .flickity-page-dots {
-	top: auto;
-	bottom: 1rem;
-	.dot {
-	    width: .6em;
-      height: .6em;
-	    margin: 0 .2em;
-	    opacity: 0.3;
-	    background: $primary;
-	    &:only-child {
-		    display: none;
-	    }
-	    &:hover {
-		    opacity: 0.6
-	    }
-	}
+   top: auto;
+   bottom: 1rem;
+   .dot {
+      width: 0.6em;
+      height: 0.6em;
+      margin: 0 0.2em;
+      opacity: 0.3;
+      background: $primary;
+      &:only-child {
+         display: none;
+      }
+      &:hover {
+         opacity: 0.6;
+      }
+   }
 }
 
 .flickity-button {
-	transition: color .5s;
-	width: auto;
-	height: auto;
-	border-radius: 0;
-	background: none;
-	color: $primary;
-	font-size: 2em;
-	line-height: 0;
-	padding: 0;
-	&:hover {
-		background: none;
-	}
-	svg {
-		display: none;
-	}
-	&:before {
-		@extend %icon-font-stuff;
-	}
-	&.next {
-		right: .8em;
-		&:before { content: "s" }
-	}
-	&.previous{
-		left: .8em;
-		&:before { content: "r" }
-	}
-	&:disabled { opacity: .2 }
+   transition: color 0.5s;
+   width: auto;
+   height: auto;
+   border-radius: 0;
+   background: none;
+   color: $primary;
+   font-size: 2em;
+   line-height: 0;
+   padding: 0;
+   &:hover {
+      background: none;
+   }
+   svg {
+      display: none;
+   }
+   &:before {
+      @extend %icon-font-stuff;
+   }
+   &.next {
+      right: 0.8em;
+      &:before {
+         content: 's';
+      }
+   }
+   &.previous {
+      left: 0.8em;
+      &:before {
+         content: 'r';
+      }
+   }
+   &:disabled {
+      opacity: 0.2;
+   }
 }

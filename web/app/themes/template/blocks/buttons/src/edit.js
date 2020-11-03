@@ -2,17 +2,16 @@
  * WordPress dependencies
  */
 import {
-	__experimentalAlignmentHookSettingsProvider as AlignmentHookSettingsProvider,
-	InnerBlocks,
-	__experimentalBlock as Block,
-} from '@wordpress/block-editor';
+   __experimentalAlignmentHookSettingsProvider as AlignmentHookSettingsProvider,
+   InnerBlocks,
+   __experimentalBlock as Block,
+} from '@wordpress/block-editor'
 
-
-const ALLOWED_BLOCKS = [ 'mmoollllee/button' ];
-const BUTTONS_TEMPLATE = [ [ 'mmoollllee/button' ] ];
+const ALLOWED_BLOCKS = ['mmoollllee/button']
+const BUTTONS_TEMPLATE = [['mmoollllee/button']]
 const UI_PARTS = {
-	hasSelectedUI: false,
-};
+   hasSelectedUI: false,
+}
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -20,7 +19,7 @@ const UI_PARTS = {
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './editor.scss';
+import './editor.scss'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -33,15 +32,15 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit( { className } ) {
-	return (
-		<div className={ className }>
-			<InnerBlocks
-				allowedBlocks={ ALLOWED_BLOCKS }
-				template={ BUTTONS_TEMPLATE }
-				__experimentalUIParts={ UI_PARTS }
-				__experimentalMoverDirection="horizontal"
-			/>
-		</div>
-	);
+export default function Edit({ className }) {
+   return (
+      <div className={className}>
+         <InnerBlocks
+            allowedBlocks={ALLOWED_BLOCKS}
+            template={BUTTONS_TEMPLATE}
+            __experimentalUIParts={UI_PARTS}
+            __experimentalMoverDirection="horizontal"
+         />
+      </div>
+   )
 }

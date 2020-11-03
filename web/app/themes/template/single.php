@@ -1,9 +1,7 @@
 <?php get_header(); ?>
 
-<?php
-	while ( have_posts() ) :
-		the_post();
-?>
+<?php while (have_posts()):
+   the_post(); ?>
 <section class="container">
 	<div class="row justify-content-center">
 		<header class="col-lg-8 text-center">
@@ -17,7 +15,8 @@
 		</div>
 	</div>
 </section>
-<?php endwhile; ?>
+<?php
+endwhile; ?>
 
 <?php builder(); ?>
 

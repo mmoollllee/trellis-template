@@ -5,46 +5,58 @@
  * Thanks to: https://gist.github.com/gerbenvandijk/5253921 (@gerbenvandijk, @Kelderic, @frafor1988, @Ricoder92)
  */
 
-add_action('nav_menu_css_class', function ($classes, $item) {
+add_action(
+   'nav_menu_css_class',
+   function ($classes, $item) {
+      // Getting the current post details
+      global $post;
 
-   // Getting the current post details
-   global $post;
+      // Get post ID, if nothing found set to NULL
+      $id = isset($post->ID) ? get_the_ID() : null;
 
-   // Get post ID, if nothing found set to NULL
-   $id = ( isset( $post->ID ) ? get_the_ID() : NULL );
+      // Checking if post ID exist...
+      if (isset($id)) {
+         // Getting the post type of the current post
+         $current_post_type = get_post_type_object(get_post_type($post->ID));
 
-   // Checking if post ID exist...
-   if (isset( $id )){
+         // Getting the rewrite slug containing the post type's ancestors
+         $ancestor_slug = $current_post_type->rewrite
+            ? $current_post_type->rewrite['slug']
+            : '';
 
-       // Getting the post type of the current post
-       $current_post_type = get_post_type_object(get_post_type($post->ID));
+         // Split the slug into an array of ancestors and then slice off the direct parent.
+         $ancestors = explode('/', $ancestor_slug);
+         $parent = array_pop($ancestors);
 
-       // Getting the rewrite slug containing the post type's ancestors
-       $ancestor_slug = $current_post_type->rewrite ? $current_post_type->rewrite['slug'] : '';
+         // Getting the URL of the menu item
+         $menu_slug = strtolower(trim($item->url));
 
-       // Split the slug into an array of ancestors and then slice off the direct parent.
-       $ancestors = explode('/',$ancestor_slug);
-       $parent = array_pop($ancestors);
+         // Remove domain from menu slug
+         $menu_slug = str_replace($_SERVER['SERVER_NAME'], '', $menu_slug);
 
-       // Getting the URL of the menu item
-       $menu_slug = strtolower(trim($item->url));
+         // If the menu item URL contains the post type's parent
+         if (
+            !empty($menu_slug) &&
+            !empty($parent) &&
+            strpos($menu_slug, $parent) !== false
+         ) {
+            $classes[] = 'current-menu-item';
+         }
 
-       // Remove domain from menu slug
-       $menu_slug = str_replace($_SERVER['SERVER_NAME'], "", $menu_slug);
-
-       // If the menu item URL contains the post type's parent
-       if (!empty($menu_slug) && !empty($parent) && strpos($menu_slug,$parent) !== false) {
-           $classes[] = 'current-menu-item';
-       }
-       
-       // If the menu item URL contains any of the post type's ancestors
-       foreach ( $ancestors as $ancestor ) {
-           if (!empty($menu_slug) && !empty($ancestor) && strpos($menu_slug,$ancestor) !== false) {
+         // If the menu item URL contains any of the post type's ancestors
+         foreach ($ancestors as $ancestor) {
+            if (
+               !empty($menu_slug) &&
+               !empty($ancestor) &&
+               strpos($menu_slug, $ancestor) !== false
+            ) {
                $classes[] = 'current-page-ancestor';
-           }
-       }
-   }
-   // Return the corrected set of classes to be added to the menu item
-   return $classes;
-
-}, 10, 2 );
+            }
+         }
+      }
+      // Return the corrected set of classes to be added to the menu item
+      return $classes;
+   },
+   10,
+   2
+);

@@ -1,224 +1,232 @@
-$input-initial:	#a8a8a8;
-$input-initial-border:	#e8e8e8;
-$input-value:	#F9F9F9;
-$input-margin: .6rem 0 0 0;
+$input-initial: #a8a8a8;
+$input-initial-border: #e8e8e8;
+$input-value: #f9f9f9;
+$input-margin: 0.6rem 0 0 0;
 
-
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-input[type="password"],
-input[type="number"],
+input[type='text'],
+input[type='email'],
+input[type='date'],
+input[type='tel'],
+input[type='password'],
+input[type='number'],
 textarea {
-	display: block;
-	border: 1px solid #bdc1cc;
-	font-size: 1rem;
-	line-height: 1.4;
-	width: 100%;
-	height: 2.5rem;
-	padding: 0.5rem;
-	color: #616161;
-	border-radius: 0;
-	box-shadow: none;
-	-webkit-appearance: none;
-	outline: none !important;
-	margin: $input-margin;
+   display: block;
+   border: 1px solid #bdc1cc;
+   font-size: 1rem;
+   line-height: 1.4;
+   width: 100%;
+   height: 2.5rem;
+   padding: 0.5rem;
+   color: #616161;
+   border-radius: 0;
+   box-shadow: none;
+   -webkit-appearance: none;
+   outline: none !important;
+   margin: $input-margin;
 
-	&:placeholder-shown {
-		border-color: $input-initial-border
-	}
+   &:placeholder-shown {
+      border-color: $input-initial-border;
+   }
 
-	&:not(:required) {
-		opacity: 0.6
-	}
+   &:not(:required) {
+      opacity: 0.6;
+   }
 
-	&[aria-required="true"] {
-		opacity: 1 !important;
-	}
+   &[aria-required='true'] {
+      opacity: 1 !important;
+   }
 
-	&:focus {
-		border-color: #000;
-	}
+   &:focus {
+      border-color: #000;
+   }
 
-	&:focus, &:not(:placeholder-shown) {
-		opacity: 1; border-color: $input-initial;
-	}
+   &:focus,
+   &:not(:placeholder-shown) {
+      opacity: 1;
+      border-color: $input-initial;
+   }
 }
 
-input[type="submit"] {
-	cursor: pointer;
+input[type='submit'] {
+   cursor: pointer;
 }
 
 select {
-	margin: $input-margin;
-	font-size: 1rem;
-	padding: 0 2rem 0 1rem;
-	height: 2rem;
+   margin: $input-margin;
+   font-size: 1rem;
+   padding: 0 2rem 0 1rem;
+   height: 2rem;
 }
 
-input[type="checkbox"] {
-	background: none;
-	appearance: none;
-	border: 1px solid $input-initial;
-	height: 1.1em;
-	width: 1.1em;
-	margin-left: 0.2rem;
-	margin-right: 0.3rem;
-	padding: .2em;
-	display: inline-block;
-	background-clip: content-box;
-	margin-bottom: -2px;
+input[type='checkbox'] {
+   background: none;
+   appearance: none;
+   border: 1px solid $input-initial;
+   height: 1.1em;
+   width: 1.1em;
+   margin-left: 0.2rem;
+   margin-right: 0.3rem;
+   padding: 0.2em;
+   display: inline-block;
+   background-clip: content-box;
+   margin-bottom: -2px;
 
-	&:hover, &:focus, &:checked {
-		border-color: #000;
-	}
+   &:hover,
+   &:focus,
+   &:checked {
+      border-color: #000;
+   }
 
-	&:checked {
-		background-color: #000;
-	}
+   &:checked {
+      background-color: #000;
+   }
 }
 
-textarea { min-height: 200px }
+textarea {
+   min-height: 200px;
+}
 
-[aria-invalid="true"],
-.wpcf7-not-valid {border-color: $red !important; border-style: dashed !important;}
+[aria-invalid='true'],
+.wpcf7-not-valid {
+   border-color: $red !important;
+   border-style: dashed !important;
+}
 
 .screen-reader-response {
-	display: none;
+   display: none;
 
-	&[data-status] {
-		margin-top: 1rem;
-		border: 1px dashed var(--danger, red);
-		padding: 5px 8px;
-		display: block
-	}
+   &[data-status] {
+      margin-top: 1rem;
+      border: 1px dashed var(--danger, red);
+      padding: 5px 8px;
+      display: block;
+   }
 
-	&[data-status="mail_sent"] {
-		border: 1px dashed var(--success, green);
-	}
+   &[data-status='mail_sent'] {
+      border: 1px dashed var(--success, green);
+   }
 
-	&:empty {
-		display: none !important;
-	}
+   &:empty {
+      display: none !important;
+   }
 }
 
 //Hide Labels
 label:not(.browser-style):not(.mailpoet_checkbox_label):not(.mailpoet_segment_label) {
-	font-size: 0;
+   font-size: 0;
 }
 
 label {
-	margin: 0;
-	width: 100%
+   margin: 0;
+   width: 100%;
 }
 
 .wpcf7 {
-	max-width: 720px;
+   max-width: 720px;
 }
 
 .wpcf7-form {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	margin-right: -10px;
-	margin-left: -10px;
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   margin-right: -10px;
+   margin-left: -10px;
 
-	> * {
-		position: relative;
-		min-height: 1px;
-		padding-right: 10px;
-		padding-left: 10px;
-		flex-basis: 100%;
+   > * {
+      position: relative;
+      min-height: 1px;
+      padding-right: 10px;
+      padding-left: 10px;
+      flex-basis: 100%;
 
-		@include media-breakpoint-up(md) {
-			flex-basis: 50%;
-		}
-	}
+      @include media-breakpoint-up(md) {
+         flex-basis: 50%;
+      }
+   }
 
-	input {
-		max-width: 350px;
-	}
+   input {
+      max-width: 350px;
+   }
 
-	.message {
-		width: 100%;
-		flex-basis: 100%;
-	}
+   .message {
+      width: 100%;
+      flex-basis: 100%;
+   }
 
-	label {
-		display: none;
-	}
+   label {
+      display: none;
+   }
 
-	.privacy,
-	.mailpoetsignup-x {
-		flex-basis: 0;
-		flex-grow: 1;
-		max-width: 100%;
+   .privacy,
+   .mailpoetsignup-x {
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
 
-		.wpcf7-form-control {
-			display: block;
-			padding-left: 1.7em;
-			margin: $input-margin;
+      .wpcf7-form-control {
+         display: block;
+         padding-left: 1.7em;
+         margin: $input-margin;
 
-			label {
-				display: inline;
-				font-size: inherit;
-			}
-		
-			input {
-				margin-left: -1.3em !important;
-			}
-		}
-	}
+         label {
+            display: inline;
+            font-size: inherit;
+         }
 
-	.wpcf7-submit {
-		font-size: .85rem !important;
-		padding: .6rem .9rem !important;
+         input {
+            margin-left: -1.3em !important;
+         }
+      }
+   }
+
+   .wpcf7-submit {
+      font-size: 0.85rem !important;
+      padding: 0.6rem 0.9rem !important;
       border: 1px solid #000 !important;
       background-color: transparent;
-		margin: 1rem 10px 0 10px;
-		flex-basis: auto;
-		align-self: center;
+      margin: 1rem 10px 0 10px;
+      flex-basis: auto;
+      align-self: center;
 
       &:hover {
          background-color: #e8e8e8;
       }
-    
+
       @include media-breakpoint-up(md) {
-        font-size: .9rem !important;
+         font-size: 0.9rem !important;
       }
-    
+
       @include media-breakpoint-up(lg) {
-        font-size: .95rem !important;
+         font-size: 0.95rem !important;
       }
-	}
+   }
 
-	&.sent .wpcf7-submit {
-		color: var(--success);
-		border-color: var(--success) !important;
-	}
+   &.sent .wpcf7-submit {
+      color: var(--success);
+      border-color: var(--success) !important;
+   }
 
-.wpcf7-response-output {
-		width: 100%
-	}
-	.wpcf7-display-none {
-		display: none;
-	}
+   .wpcf7-response-output {
+      width: 100%;
+   }
+   .wpcf7-display-none {
+      display: none;
+   }
 }
 
 .label-select {
-	display: flex;
-	align-items: baseline;
-	
-	.wpcf7-form-control-wrap {
-		order: -1;
-	}
+   display: flex;
+   align-items: baseline;
+
+   .wpcf7-form-control-wrap {
+      order: -1;
+   }
 }
 
 .wpcf7-quiz-label {
-	font-size: 1rem !important;
-	transform: translateY(1em);
-	display: block;
+   font-size: 1rem !important;
+   transform: translateY(1em);
+   display: block;
 }
 
 .mailpoet_form {
@@ -227,7 +235,7 @@ label {
 }
 
 input.mailpoet_text {
-	padding: 12px !important;
+   padding: 12px !important;
 }
 
 input.mailpoet_text,
@@ -236,23 +244,23 @@ label.mailpoet_text_label,
 label.mailpoet_segment_label,
 label.mailpoet_select_label,
 input.mailpoet_submit {
-	font-size: .85rem !important;
- 
-	@include media-breakpoint-up(md) {
-	  font-size: .9rem !important;
-	}
- 
-	@include media-breakpoint-up(lg) {
-	  font-size: .95rem !important;
-	}
- }
+   font-size: 0.85rem !important;
+
+   @include media-breakpoint-up(md) {
+      font-size: 0.9rem !important;
+   }
+
+   @include media-breakpoint-up(lg) {
+      font-size: 0.95rem !important;
+   }
+}
 
 input.mailpoet_submit {
-	padding: .6rem .9rem !important;
-	border: 1px solid #000 !important;
-	background-color: transparent;
+   padding: 0.6rem 0.9rem !important;
+   border: 1px solid #000 !important;
+   background-color: transparent;
 
-	&:hover {
-		background-color: #e8e8e8;
-	}
+   &:hover {
+      background-color: #e8e8e8;
+   }
 }

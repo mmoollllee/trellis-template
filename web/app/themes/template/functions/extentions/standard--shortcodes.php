@@ -7,33 +7,32 @@
 
 add_shortcode('mail', 'wpcodex_hide_email_shortcode');
 add_shortcode('email', 'wpcodex_hide_email_shortcode');
-function wpcodex_hide_email_shortcode($atts, $content = null)
-{
-    $atts = array_change_key_case((array) $atts, CASE_LOWER);
-    $a = shortcode_atts(
-        [
-            'class' => '',
-            'data-icon-left' => '',
-            'data-icon-right' => '',
-        ],
-        $atts
-    );
-    if (!is_email($content)) {
-        return;
-    }
-    return '<a ' .
-        ($a['class'] ? 'class="' . $a['class'] . '" ' : '') .
-        ($a['data-icon-left']
-            ? 'data-icon-left="' . $a['data-icon-left'] . '" '
-            : '') .
-        ($a['data-icon-right']
-            ? 'data-icon-right="' . $a['data-icon-right'] . '" '
-            : '') .
-        'itemprop="email" href="mailto:' .
-        antispambot($content) .
-        '"><span>' .
-        antispambot($content) .
-        '</span></a>';
+function wpcodex_hide_email_shortcode($atts, $content = null) {
+   $atts = array_change_key_case((array) $atts, CASE_LOWER);
+   $a = shortcode_atts(
+      [
+         'class' => '',
+         'data-icon-left' => '',
+         'data-icon-right' => '',
+      ],
+      $atts
+   );
+   if (!is_email($content)) {
+      return;
+   }
+   return '<a ' .
+      ($a['class'] ? 'class="' . $a['class'] . '" ' : '') .
+      ($a['data-icon-left']
+         ? 'data-icon-left="' . $a['data-icon-left'] . '" '
+         : '') .
+      ($a['data-icon-right']
+         ? 'data-icon-right="' . $a['data-icon-right'] . '" '
+         : '') .
+      'itemprop="email" href="mailto:' .
+      antispambot($content) .
+      '"><span>' .
+      antispambot($content) .
+      '</span></a>';
 }
 
 /*
@@ -42,8 +41,8 @@ function wpcodex_hide_email_shortcode($atts, $content = null)
 */
 
 add_shortcode('excerpt', function ($args, $content = null) {
-    global $post;
-    return '<p>' . $post->post_excerpt . '</p>';
+   global $post;
+   return '<p>' . $post->post_excerpt . '</p>';
 });
 
 /*
@@ -52,7 +51,7 @@ add_shortcode('excerpt', function ($args, $content = null) {
 */
 
 add_shortcode('title', function ($args, $content = null) {
-    return get_the_title();
+   return get_the_title();
 });
 
 /*
@@ -61,18 +60,18 @@ add_shortcode('title', function ($args, $content = null) {
 */
 
 add_shortcode('field', function ($atts, $content = null) {
-    $atts = array_change_key_case((array) $atts, CASE_LOWER);
-    $a = shortcode_atts(
-        [
-            'name' => '', //name of the field
-            'id' => '', //optional id (e.g. "options") where to get the field
-        ],
-        $atts
-    );
+   $atts = array_change_key_case((array) $atts, CASE_LOWER);
+   $a = shortcode_atts(
+      [
+         'name' => '', //name of the field
+         'id' => '', //optional id (e.g. "options") where to get the field
+      ],
+      $atts
+   );
 
-    global $post;
+   global $post;
 
-    return get_field($a['name'], $a['id'] ? $a['id'] : $post->id);
+   return get_field($a['name'], $a['id'] ? $a['id'] : $post->id);
 });
 
 /*
@@ -80,20 +79,19 @@ add_shortcode('field', function ($atts, $content = null) {
 */
 
 add_filter(
-    'acf/format_value/type=textarea',
-    'acf_text_fields_shortcode',
-    10,
-    3
+   'acf/format_value/type=textarea',
+   'acf_text_fields_shortcode',
+   10,
+   3
 );
 add_filter('acf/format_value/type=text', 'acf_text_fields_shortcode', 10, 3);
 add_filter(
-    'acf/format_value/type=acf_code_field',
-    'acf_text_fields_shortcode',
-    10,
-    3
+   'acf/format_value/type=acf_code_field',
+   'acf_text_fields_shortcode',
+   10,
+   3
 );
-function acf_text_fields_shortcode($value, $post_id, $field)
-{
-    $value = do_shortcode($value);
-    return $value;
+function acf_text_fields_shortcode($value, $post_id, $field) {
+   $value = do_shortcode($value);
+   return $value;
 }

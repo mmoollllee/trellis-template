@@ -1,5 +1,8 @@
 {
-  "semi": false,
-  "arrowParens": "always",
-  "singleQuote": true
+   "semi": false,
+   "trailingComma": "all",
+   "tabWidth": 3,
+   "arrowParens": "always",
+   "singleQuote": true,
+   "braceStyle": "1tbs"
 }

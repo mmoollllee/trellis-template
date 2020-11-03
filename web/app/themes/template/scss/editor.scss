@@ -1,35 +1,35 @@
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
+@import 'bootstrap/functions';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
 
-@import "main/variables";
+@import 'main/variables';
 
-@import "main/mixins/position";
-@import "main/mixins/appearance";
+@import 'main/mixins/position';
+@import 'main/mixins/appearance';
 
-@import "main/utilities/height";
-@import "main/utilities/bootstrap";
-@import "main/utilities/cover";
-@import "main/utilities/multi-columns";
-@import "main/utilities/overflow";
-@import "main/utilities/font";
-@import "main/utilities/layout";
+@import 'main/utilities/height';
+@import 'main/utilities/bootstrap';
+@import 'main/utilities/cover';
+@import 'main/utilities/multi-columns';
+@import 'main/utilities/overflow';
+@import 'main/utilities/font';
+@import 'main/utilities/layout';
 
-@import "main/extentions/iframe-privacy";
-@import "main/extentions/cookie";
-@import "main/extentions/flickity";
-@import "main/extentions/fancybox";
-@import "main/extentions/icons";
+@import 'main/extentions/iframe-privacy';
+@import 'main/extentions/cookie';
+@import 'main/extentions/flickity';
+@import 'main/extentions/fancybox';
+@import 'main/extentions/icons';
 
-@import "main/font-import";
-@import "main/font";
-@import "main/forms";
-@import "main/layout";
-@import "main/header";
-@import "main/navigation";
-@import "main/footer";
-@import "main/table";
-@import "main/blocks";
+@import 'main/font-import';
+@import 'main/font';
+@import 'main/forms';
+@import 'main/layout';
+@import 'main/header';
+@import 'main/navigation';
+@import 'main/footer';
+@import 'main/table';
+@import 'main/blocks';
 
 // Only backend stuff here!
 
@@ -39,7 +39,9 @@
    margin-right: auto;
    font-family: $font-family-sans-serif;
 
-   h2, h3, h4{
+   h2,
+   h3,
+   h4 {
       font-family: $headings-font-family;
    }
 }
@@ -48,7 +50,7 @@
  * Main column width
  * This changes it from the default 580px to 720px
  */
- .wp-block {
+.wp-block {
    max-width: 80% !important;
 }
 
@@ -56,6 +58,6 @@
 * Width of "wide" blocks
 * This changes it from the default 1080px to 1280px
 */
-.wp-block[data-align="wide"] {
+.wp-block[data-align='wide'] {
    max-width: 90% !important;
 }

@@ -9,13 +9,14 @@
    -moz-osx-font-smoothing: grayscale;
    position: relative;
    line-height: inherit;
-   }
+}
 
 .accordion {
    overflow: hidden;
 
-   &, & * {
-      transition: .2s border-color, .2s height, .2s opacity, .5s margin
+   &,
+   & * {
+      transition: 0.2s border-color, 0.2s height, 0.2s opacity, 0.5s margin;
    }
 
    header {
@@ -23,10 +24,10 @@
          cursor: pointer;
          &:after {
             @extend %icon-font-stuff;
-            content: "\64";
-            margin-left: .4em;
-            bottom: -.2em;
-            font-size: .9em;
+            content: '\64';
+            margin-left: 0.4em;
+            bottom: -0.2em;
+            font-size: 0.9em;
          }
       }
    }
@@ -49,7 +50,7 @@
             font-size: 1.7rem;
             opacity: 1;
             &:after {
-               content:"\61"
+               content: '\61';
             }
          }
       }

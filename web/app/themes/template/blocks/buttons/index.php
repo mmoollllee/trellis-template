@@ -17,46 +17,46 @@
  *
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/applying-styles-with-stylesheets/
  */
-add_action( 'init', function () {
-	$dir = dirname( __FILE__ );
-	$path = get_template_directory_uri();
-	$slug = basename($dir);
+add_action('init', function () {
+   $dir = dirname(__FILE__);
+   $path = get_template_directory_uri();
+   $slug = basename($dir);
 
-	$script_asset_path = "$dir/build/index.asset.php";
-	if ( ! file_exists( $script_asset_path ) ) {
-		throw new Error(
-			'You need to run `npm start` or `npm run build` for the "mmoollllee/buttons" block first.'
-		);
-	}
-	$index_js     = 'build/index.js';
-	$script_asset = require( $script_asset_path );
-	wp_register_script(
-		'mmoollllee-buttons-block-editor',
-		$path."/blocks/{$slug}/{$index_js}",
-		$script_asset['dependencies'],
-		$script_asset['version']
-	);
-	wp_set_script_translations( 'mmoollllee-buttons-block-editor', 'buttons' );
+   $script_asset_path = "$dir/build/index.asset.php";
+   if (!file_exists($script_asset_path)) {
+      throw new Error(
+         'You need to run `npm start` or `npm run build` for the "mmoollllee/buttons" block first.'
+      );
+   }
+   $index_js = 'build/index.js';
+   $script_asset = require $script_asset_path;
+   wp_register_script(
+      'mmoollllee-buttons-block-editor',
+      $path . "/blocks/{$slug}/{$index_js}",
+      $script_asset['dependencies'],
+      $script_asset['version']
+   );
+   wp_set_script_translations('mmoollllee-buttons-block-editor', 'buttons');
 
-	$editor_css = 'build/index.css';
-	wp_register_style(
-		'mmoollllee-buttons-block-editor',
-		$path."/blocks/{$slug}/{$editor_css}",
-		array(),
-		filemtime( "$dir/$editor_css" )
-	);
+   $editor_css = 'build/index.css';
+   wp_register_style(
+      'mmoollllee-buttons-block-editor',
+      $path . "/blocks/{$slug}/{$editor_css}",
+      [],
+      filemtime("$dir/$editor_css")
+   );
 
-	$style_css = 'build/style-index.css';
-	wp_register_style(
-		'mmoollllee-buttons-block',
-		$path."/blocks/{$slug}/{$style_css}",
-		array(),
-		filemtime( "$dir/$style_css" )
-	);
+   $style_css = 'build/style-index.css';
+   wp_register_style(
+      'mmoollllee-buttons-block',
+      $path . "/blocks/{$slug}/{$style_css}",
+      [],
+      filemtime("$dir/$style_css")
+   );
 
-	register_block_type( 'mmoollllee/buttons', array(
-		'editor_script' => 'mmoollllee-buttons-block-editor',
-		'editor_style'  => 'mmoollllee-buttons-block-editor',
-		'style'         => 'mmoollllee-buttons-block',
-	) );
+   register_block_type('mmoollllee/buttons', [
+      'editor_script' => 'mmoollllee-buttons-block-editor',
+      'editor_style' => 'mmoollllee-buttons-block-editor',
+      'style' => 'mmoollllee-buttons-block',
+   ]);
 });

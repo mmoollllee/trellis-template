@@ -1,30 +1,28 @@
 <?php
 
-$mg_vimeo = new StoutLogic\AcfBuilder\FieldsBuilder('mg_vimeo',[
-	'title' => 'Vimeo',
-	'style' => 'default', // or 'seamless'
+$mg_vimeo = new StoutLogic\AcfBuilder\FieldsBuilder('mg_vimeo', [
+   'title' => 'Vimeo',
+   'style' => 'default', // or 'seamless'
 ]);
 $mg_vimeo
-	->addText('vimeo_id', [
-		'label' => 'Video URL',
-		'instructions' => 'Bitte nur die ID des Videos eingeben.',
-		'placeholder' => '370298388',
-		'prepend' => 'https://vimeo.com/',
-	])
+   ->addText('vimeo_id', [
+      'label' => 'Video URL',
+      'instructions' => 'Bitte nur die ID des Videos eingeben.',
+      'placeholder' => '370298388',
+      'prepend' => 'https://vimeo.com/',
+   ])
 
-	->setLocation('block', '==', 'acf/mg-vimeo');
+   ->setLocation('block', '==', 'acf/mg-vimeo');
 
-
-add_action('acf/init', function() use ($mg_vimeo) {
+add_action('acf/init', function () use ($mg_vimeo) {
    acf_add_local_field_group($mg_vimeo->build());
 });
-
 
 /**
  * Show iframe in Backend
  */
 add_action('admin_head', function () {
-	?>
+   ?>
 	<style>
 		.vimeo:before {
 			content: "Vimeo Video";
@@ -40,6 +38,4 @@ add_action('admin_head', function () {
 		}
 	</style>
 	<?php
-	
-}
-);
+});
