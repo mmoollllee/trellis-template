@@ -78,12 +78,8 @@ add_shortcode('field', function ($atts, $content = null) {
   Add to acf
 */
 
-add_filter(
-   'acf/format_value/type=textarea',
-   'acf_text_fields_shortcode',
-   10,
-   3
-);
+add_filter( 'acf/format_value/type=textarea', 'acf_text_fields_shortcode', 10, 3 );
+add_filter( 'acf/format_value/type=wysiwyg', 'acf_text_fields_shortcode', 10, 3 );
 add_filter('acf/format_value/type=text', 'acf_text_fields_shortcode', 10, 3);
 add_filter(
    'acf/format_value/type=acf_code_field',

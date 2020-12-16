@@ -1,22 +1,307 @@
-/*
-  Note: Bootstrap mixins
+body {
+   font-family: 'DINWeb', sans-serif;
+   margin: 0;
+   padding: 0;
+   font-size: 14px;
+   box-sizing: border-box;
+   width: 100%;
+   color: #000
+}
 
-  @include media-breakpoint-down(sm)
-  @include media-breakpoint-up(sm)
-  @include media-breakpoint-only(sm)
-*/
+#wrapper {
+   padding-top: 7em;
+   border: 15px $primary solid;
+   background-clip: content-box;
+   background: #3a3a3a url('../images/wall.jpg') repeat-x top;
+
+   @include media-breakpoint-up(md) {
+      padding-top: 9em;
+   }
+}
+
+main > #archive-header > .row,
+main > #page-header:not(.header-grid) > .row,
+main .header-grid,
+main > section > .row,
+main .einleitung > .row,
+footer > .row,
+#header-breadcrumb {
+   max-width: 1140px;
+   margin-left: auto !important;
+   margin-right: auto !important;
+   padding: 10px;
+}
+
+#page-header:not(.header-grid):after,
+// .header-grid .titel:after,
+.header-grid .bg-white:before,
+.home main:before,
+#archive-header:before {
+   background: #fff url("../images/moon.jpg") repeat-x top;
+   position: absolute;
+   z-index: -1;
+   content: "";
+   height: 100%;
+   width: 100%;
+   left: 0;
+}
+
+.header-grid .einleitung:before {
+   transform: translateY(-12px)
+}
+
+main > section {
+   padding-top: 3em;
+   padding-bottom: 4em;
+}
+
+.bg-white {
+   color: #000;
+   background: transparent !important
+}
+ 
+.grey,
+.bg-grey {
+   background: #e5e5e6;
+   max-width: 100%;
+}
+
+.grey,
+.bg-grey,
+.bg-white,
+#archive-header>.grid {
+  padding-top: 2em;
+  padding-bottom: 1em;
+}
+
+@include media-breakpoint-up(md) {
+   .bg-grey {
+      padding-top: 4em;
+      padding-bottom: 4em;
+   }
+}
+
+header + .bg-white {
+   padding-top: 0;
+}
+
+.page-id-2524 main {
+   & > .category {
+      &:nth-child(odd) {
+         background: $grey-ligt;
+      }
+      &:nth-child(even) {
+         background: transparent;
+      }
+   }
+}
 
 img {
    max-width: 100%;
    height: auto;
 }
 
-[data-rellax-speed] {
-   z-index: 1;
-}
-
 .container.row,
 .container-fluid.row {
    margin: auto;
    padding: 0;
+}
+
+@include media-breakpoint-up(xl) {
+   aside[class*="col"]>.inner {
+      margin-left: 30px;
+   }
+}
+
+aside .thumbnail {
+   padding: 0.5em;
+   background: $grey-ligt; //#e9eaea
+   text-align: center;
+
+   img {
+      width: 4.5em;
+      height: 4.5em;
+      object-fit: contain;
+      max-width: initial;
+   }
+}
+
+.produktliste {
+   padding-left: 5px !important;
+   padding-right: 5px !important;
+   li {
+      background-clip: content-box;
+      padding: 5px !important;
+      &:hover {
+         background-color: #f2f2f2;
+         transition: 0.3s;
+      }
+      p {
+         margin-bottom: 0;
+      }
+   }
+
+   &.partnerzubehoer li {
+      .thumbnail {
+         height: 3em
+      }
+      &:hover {
+      background-color: inherit;
+      }
+   }
+}
+
+.content {
+   margin-bottom: 1.5em;
+
+   ul {
+      margin: 1em 0 1.5em;
+      padding-left: 40px;
+
+      li {
+         font-weight: 600;
+         color: $dark-blue;
+         padding: 0.2em 0;
+
+         &:before {
+            margin-left: -1.7em;
+            padding-right: 0.9em;
+            font-size: 1.2em;
+            top: .2em;
+            transform: none;
+         }
+
+         ul {
+            list-style: disc;
+            margin: initial;
+            padding-left: 20px;
+
+            li {
+               list-style: disc;
+
+               &:before {
+                  content: "";
+               }
+            }
+         }
+      }
+   }
+}
+
+ul.inline li {
+   padding-right: 3em !important;
+   display: inline-block !important;
+   min-width: 44%;
+}
+
+.usps {
+   .usp {
+      margin-bottom: 1em;
+
+      &[class*="icon"] {
+         margin-left: 1.5em;
+         padding-left: .3em;
+      }
+
+      &:before {
+         color: $secondary;
+         font-size: 1.5em;
+         top: .05em;
+         transform: none;
+      }
+
+      h4 {
+         font-size: 1em;
+         line-height: 1.5;
+         margin-bottom: 0;
+      }
+
+      p {
+         margin: 0;
+      }
+
+      .button {
+         padding: 0
+      }
+   }
+}
+
+
+.ansprechpartner {
+   font-size: 0.8em;
+
+   div {
+      padding: 0 0.2em 1em 0;
+
+      .name {
+         display: block;
+         font-size: 1.2em
+      }
+   }
+}
+
+
+
+
+.aktuelles, aside {
+   margin-bottom: 2em;
+}
+
+// .category {
+//    .thumbnail-box,
+//    header {
+//       &.swiper-slide {
+//          min-width: 200px;
+//          width: 25%
+//       }
+//    }
+// }
+
+ 
+.partner {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   text-align: center;
+
+   li {
+      display: inline-block;
+      width: 32%;
+      padding: 10px;
+      box-sizing: border-box;
+
+      img {
+         height: 100%;
+         max-width: initial;
+         width: 100%;
+         object-fit: contain;
+         max-height: 10vw;
+      }
+      @include media-breakpoint-up(s) {
+         width: 29%;
+      }
+      @include media-breakpoint-up(md) {
+         width: 49%;
+      }
+      @include media-breakpoint-up(lg) {
+         width: 32%;
+         img {
+            max-height: 65px;
+         }
+      }
+   }
+}
+
+.page-template-page-produkt {
+   main > section > .row {
+      align-items: flex-start !important;
+   }
+}
+
+.haeberle-baukasten {
+   .thumbnail-box {
+      .thumbnail img {
+         width: 80%
+      }
+   }
 }

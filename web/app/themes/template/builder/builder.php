@@ -1,44 +1,14 @@
 <?php
 
-add_action('admin_enqueue_scripts', function () {
-   wp_enqueue_script(
-      'mg_arrive',
-      get_template_directory_uri() . '/builder/js/arrive.min.js'
-   );
-   wp_enqueue_script(
-      'mg_builder_script',
-      get_template_directory_uri() . '/builder/js/builder.js',
-      ['mg_arrive']
-   );
-   wp_enqueue_style(
-      'mg_builder_style',
-      get_template_directory_uri() . '/builder/css/builder.css',
-      false
-   );
-   if (!current_user_can('administrator')) {
-      wp_enqueue_script(
-         'mg_builder_script_restrict',
-         get_template_directory_uri() . '/builder/js/builder-restrict.js',
-         ['mg_arrive', 'mg_builder_script']
-      );
-      wp_enqueue_style(
-         'mg_builder_restrict',
-         get_template_directory_uri() . '/builder/css/builder-restrict.css',
-         false
-      );
-   }
-});
-
 function builder($args = false) {
    $defaults = [
       'label' => 'builder',
       'post_id' => false,
-      'print' => true,
+      'print' => true
    ];
    $args = wp_parse_args($args, $defaults);
 
    $return = '';
-   $hierarchie = 0;
    $hierarchie_prev = -1;
    $close = [];
 
@@ -47,68 +17,71 @@ function builder($args = false) {
          the_row();
 
          $hierarchie = get_sub_field('hierarchie');
+
+         /* Skip fields if they are too deep, or if the previous parent was inactive */
+         if ($hierarchie > $hierarchie_prev + 1) {
+            continue;
+         }
+
+         /**
+          * if $hierarchie is smaller or equal than previous...
+          */
          if ($hierarchie <= $hierarchie_prev) {
-            $i = 0;
+            /* ...walk up */
             while ($hierarchie <= $hierarchie_prev) {
                if (isset($close[$hierarchie_prev])) {
                   $return .= "\n" . $close[$hierarchie_prev] . "\n";
+                  /* reset $close for current $hierarchie */
                   $close[$hierarchie_prev] = '';
                }
                $hierarchie_prev--;
-               $i++;
             }
          }
 
-         $layout = explode('--', get_row_layout());
-
-         require 'templates/' . $layout[0] . '.php';
-
-         $template_parts = preg_split(
-            '/(<!--content-->|<!--childs-->)/',
-            $template
-         );
-         preg_match_all(
-            '/(<!--content-->)|(<!--childs-->)/',
-            $template,
-            $matches,
-            PREG_PATTERN_ORDER
-         );
-
+         /* Reset $close for this $hierarchie */
          $close[$hierarchie] = '';
 
-         $return .= $template_parts[0];
+         /**
+          * Check if this one is active,
+          * else walk up one hierarchie so all childs will be skipped!
+          */
+         if (get_sub_field('aktiv')):
+            /* get current layout slug */
+            $layout = explode('--', get_row_layout());
+            $content = get_sub_field('inhalt') ?: '';
+            $title = get_sub_field('title') ?: '';
+            $slug = (get_sub_field('slug') && !empty(get_sub_field('slug')) && get_sub_field('slug') != 'false' && get_sub_field('slug') != 'titel') ? get_sub_field('slug') : '';
+	         $has_title = strpos($content, '<!--title-->') !== false;
+            
+            ob_start();
 
-         if (isset($matches[0][0]) && isset($matches[0][1])) {
-            if (
-               $matches[0][0] == '<!--content-->' &&
-               $matches[0][1] == '<!--childs-->'
-            ) {
-               $return .= $content;
-               $return .= $template_parts[1];
-               $close[$hierarchie] .= $template_parts[2];
-            } elseif (
-               $matches[0][0] == '<!--childs-->' &&
-               $matches[0][1] == '<!--content-->'
-            ) {
-               $close[$hierarchie] .= $template_parts[1];
-               $close[$hierarchie] .= $content;
-               $close[$hierarchie] .= $template_parts[2];
-            }
-         } else {
-            $return .= $content;
-            if (isset($template_parts[1])) {
-               $close[$hierarchie] .= $template_parts[1];
-            }
-         }
+            require 'templates/' . $layout[0] . '.php';
+
+            $template = ob_get_contents();
+            ob_end_clean();
+
+            $parts = sort_parts($template, $content, $title);
+            $return .= $parts['return'];
+            $close[$hierarchie] = $parts['close'];
+         else:
+            $hierarchie--;
+         endif;
+
+         /* Save current $hierarchie to know where we came from in the next loop */
          $hierarchie_prev = $hierarchie;
+         /* Reset content */
+         $content = '';
       endwhile;
 
-      $return .= '<!-- last loop-->';
+      /**
+       * walk up $close and return left $close
+       */
       for ($i = count($close) - 1; $i >= 0; $i--) {
          $return .= $close[$i];
       }
    endif;
 
+   /* are we ment to return or print for debugging? */
    if ($args['print']) {
       print_r($return);
    } else {

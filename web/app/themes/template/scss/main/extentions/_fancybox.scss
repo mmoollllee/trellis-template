@@ -1,11 +1,11 @@
-.fancybox-image[src$='.png'] {
-   background-color: #fff !important;
-}
-
-.fancybox-container .fancybox-video.d-none {
-   display: block !important;
+.fancybox-container .d-none {
+   display: inline-block !important;
 }
 
 .fancybox-stage .fancybox-content {
    max-width: 1000px !important;
+}
+
+.fancybox-stage .fancybox-slide--image .fancybox-content {
+   max-width: initial !important;
 }

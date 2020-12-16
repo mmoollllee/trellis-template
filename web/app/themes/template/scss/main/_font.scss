@@ -10,29 +10,12 @@ h6,
 .h4,
 .h5,
 .h6 {
-   padding-top: 1.5rem;
-
-   @include media-breakpoint-up(md) {
-      padding-top: 2rem;
-   }
-}
-
-main p:last-child,
-main ul:last-child {
-   padding-bottom: 1rem;
-}
-
-main p:last-child:first-of-type {
-   // padding-bottom: 0;
    margin: 0;
-}
-
-.last-p-p-0 p:last-of-type {
-   margin-bottom: 0;
-}
-
-.p-last-pb-0 > p:last-child {
+   width: 100%;
+   line-height: 1;
+   padding-top: 0;
    padding-bottom: 0;
+   display: block;
 }
 
 p,
@@ -46,8 +29,7 @@ h4 {
    hyphens: auto;
 }
 
-main p,
-main table {
+main p {
    line-height: 1.5;
    margin: 0 0 1em;
 }
@@ -61,10 +43,6 @@ button {
    color: inherit;
    border: 0 none;
    cursor: pointer;
-}
-
-#navtoggle {
-   font-size: 2rem;
 }
 
 h1,
@@ -88,7 +66,19 @@ h1,
 
 h2,
 .h2 {
+   color: $secondary;
+   font-weight: 800;
    font-size: 1.8rem;
+   margin-left: -0.07em;
+
+   @include media-breakpoint-up(md) {
+      font-size: 2.2rem;
+   }
+
+   @include media-breakpoint-up(lg) {
+      font-size: 3rem;
+   }
+
    small {
       font-size: 1rem;
       font-weight: 300;
@@ -101,72 +91,118 @@ h2,
 
 h3,
 .h3 {
-   font-size: 1.2rem;
-   padding-top: 0;
-   // letter-spacing: .05em;
+   color: $dark-blue;
+   font-weight: 600;
+   font-size: 1.5rem;
+   margin-bottom: .8em;
+
+   .aktuelles &,
+   .category & {
+      font-size: 2em;
+      font-weight: 800;
+      color: $secondary;
+      padding-top: 0;
+
+      &:hover {
+         color: $dark-blue
+      }
+   }
+      
+   .aktuelles & {
+      padding-top: 0.1em;
+      padding-bottom: 0.3em;
+   }
+
+   @include media-breakpoint-up(md) {
+      .aktuelles &,
+      .category & {
+         font-size: 2.5em;
+      }
+      
+      .aktuelles & {
+         padding-top: 0.5em;
+         padding-bottom: 0.4em;
+      }
+   }
 }
 
 h4,
 .h4 {
-   font-size: 1em;
+   color: $dark-blue;
+   font-size: 1.2rem;
+   font-weight: 600;
+   margin-bottom: .5em;
 }
 
-p,
-.wp-block-button__link,
-input,
-main ul li,
-.button {
-   font-size: 0.85rem;
+h5,
+.h5 {
+   color: inherit;
+   font-size: 1rem;
+   font-weight: 600;
+}
 
-   @include media-breakpoint-up(md) {
-      font-size: 0.9rem;
-   }
-
-   @include media-breakpoint-up(lg) {
-      font-size: 0.95rem;
+.thumbnail-box,
+.box {
+   h4,
+   .h4 {
+      color: secondary;
+      font-size: 1em;
+      font-weight: 600;
+      margin-top: .5em
    }
 }
 
 a {
-   font-weight: 400;
-   color: #000;
-   text-decoration: underline;
 
    &:hover {
-      text-decoration: none;
-      color: inherit;
    }
 
    &[data-icon-left],
    &[data-icon-right] {
       text-decoration: none;
-      font-weight: 300;
+   }
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+
+   &:hover {
+      color: $grey
+   }
+}
+
+p a:not([class]),
+a>small {
+  color: $grey;
+  text-decoration: underline;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  &:hover {
+   text-decoration: none
+  }
+}
+
+footer p a:not([class]) {
+  color: inherit
+}
+
+small,
+.small {
+   font-size: 90%;
+   color: $grey;
+   &[data-icon-left] {
+     margin-left: 1em 
    }
 }
 
 .more-link,
 .button  {
-   padding: 0.6rem 0.9rem !important;
-   border: 1px solid #000 !important;
-   background-color: transparent;
    cursor: pointer;
-   margin: 1rem 0 1rem 0;
-   display: inline-block;
-   text-decoration: none !important;
 
    &:hover {
       background-color: #e8e8e8;
    }
-}
-
-[data-icon-right]:after {
-   margin-left: 0.4em;
-   bottom: -0.1em;
-}
-
-[data-icon-left]:before {
-   margin-right: 0.6em;
-   bottom: -0.16em;
 }
 
 i[class^='icon-']:before {
@@ -174,16 +210,9 @@ i[class^='icon-']:before {
 }
 
 .more-link {
-   padding: 0.6rem 0.9rem !important;
-   border: 1px solid #000 !important;
-   background-color: transparent;
    cursor: pointer;
-   margin: 1rem 0 1rem 0;
-   display: inline-block;
-   text-decoration: none !important;
 
    &:hover {
-      background-color: #e8e8e8;
    }
 
    &:after {
@@ -191,5 +220,50 @@ i[class^='icon-']:before {
       @extend %icon-font-stuff;
       margin-left: 0.4em;
       bottom: -0.2em;
+   }
+}
+
+.untertitel {
+   margin: 0.4em 0;
+   line-height: 1.2;
+   font-size: 1.1rem;
+   font-weight: 400;
+   color: #000;
+   display: block;
+   @include media-breakpoint-up(md) {
+      font-size: 1.3rem;
+   }
+
+   #page-header & {
+      margin-bottom: 0;
+   }
+
+   #page-header & {
+      color: #fff
+   }
+
+   p {
+      margin-bottom: 0;
+      color: inherit;
+   }
+
+   nav {
+      a {
+         position: relative;
+         margin-right: 1em;
+         &:after {
+            top: 60%;
+            font-size: 0.8em;
+         }
+         &[href^="http"]:after {
+            content: "c"
+          }
+      }
+   }
+}
+
+aside {
+   h3 {
+      font-size: 1.2rem;
    }
 }

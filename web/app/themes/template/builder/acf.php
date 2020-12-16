@@ -29,59 +29,84 @@ $options
    ])
    ->addText('title', [
       'label' => 'Titel',
-      'message' => 'Redaktioneller Inhalt',
       'wrapper' => ['class' => 'title'],
       'default_value' => 'Titel',
+   ])
+   ->addText('slug', [
+      'label' => 'Titelform',
+      'wrapper' => ['width' => '20'],
    ]);
 
-/*
-		Standard-Content-Feld
-	*/
-
-$content = new StoutLogic\AcfBuilder\FieldsBuilder('content');
-$content
-   ->addFields($options)
+/**
+ * Code Overwrite Field
+ */
+$code = new StoutLogic\AcfBuilder\FieldsBuilder('code');
+$code
    ->addField('code', 'acf_code_field', [
       'label' => 'HTML',
       'placeholder' => '',
-      'default_value' => '<section class="container">
-						<div class="row">
-								<div class="col-12">
-										<!--content-->
-								</div>
-						</div>
-				</section>',
+      'default_value' => '',
+   ]);
+
+/**
+ * Standard Content Feld
+ */
+$content = new StoutLogic\AcfBuilder\FieldsBuilder('content');
+$content
+   ->addFields($options)
+   ->addSelect('layout', [
+      'label' => 'Layout',
+      'required' => 1,
+      'wrapper' => ['width' => '20'],
+      'choices' => [
+         'full' => 'Volle Breite',
+         '50-50' => 'Halbe Breite',
+         '1-3' => '1/3',
+         '2-3' => '2/3',
+      ],
    ])
-   ->addWysiwyg('content', [
+   ->addWysiwyg('inhalt', [
       'label' => 'Inhalt',
       'tabs' => 'all',
       'toolbar' => 'full',
       'media_upload' => 1,
-   ]);
+   ])
+   ->addFields($code);
 
-/*
-		Galerie-Feld
-	*/
+/**
+ * Sektion
+ */
+$sektion = new StoutLogic\AcfBuilder\FieldsBuilder('content');
+$sektion
+   ->addFields($options)
+   ->addSelect('layout', [
+      'label' => 'Layout',
+      'required' => 0,
+      'wrapper' => ['width' => '20'],
+      'allow_null' => 1,
+      'multiple' => 1,
+      'ui' => 1,
+      'choices' => [
+         'bg-white' => 'Weißer Hintergrund',
+         'bg-grey' => 'Grauer Hintergrund',
+         'pt-0' => 'Kein Abstand nach oben',
+         'pb-0' => 'Kein Abstand nach unten',
+      ],
+   ])
+   ->addWysiwyg('inhalt', [
+      'label' => 'Inhalt',
+      'tabs' => 'all',
+      'toolbar' => 'basic',
+      'media_upload' => 1
+   ])
+   ->addFields($code);
 
+/**
+ * Galerie
+ */
 $galerie = new StoutLogic\AcfBuilder\FieldsBuilder('galerie');
 $galerie
    ->addFields($options)
-   ->addField('code', 'acf_code_field', [
-      'label' => 'HTML',
-      'placeholder' => '',
-      'default_value' => '<div class="col-lg-7" data-flickity=\'{
-						"pageDots": true,
-						"lazyLoad": 2,
-						"wrapAround": true,
-						"prevNextButtons": true,
-						"adaptiveHeight":true,
-						"contain": false,
-						"autoPlay": true,
-						"prevNextButtons": false
-				}\'>
-						<!--content-->
-				</div>',
-   ])
    ->addText('classes', [
       'label' => 'Klassen',
       'wrapper' => ['width' => '15'],
@@ -100,7 +125,8 @@ $galerie
    ])
    ->addSelect('imagesize', [
       'label' => 'Bildgröße',
-      'wrapper' => ['width' => '15'],
+      'required' => 1,
+      'wrapper' => ['width' => '20'],
       'choices' => [
          'thumbnail' => 'thumbnail (400x400)',
          'medium' => 'medium (600x0)',
@@ -108,58 +134,63 @@ $galerie
          'large' => 'large (1800x0)',
       ],
    ])
+   ->addSelect('layout', [
+      'label' => 'Layout',
+      'required' => 1,
+      'wrapper' => ['width' => '20'],
+      'choices' => [
+         'full-2' => 'Volle Breite, 2-spaltig',
+         'halb-2' => 'Halbe Breite, 2-spaltig',
+      ],
+   ])
    ->addGallery('bilder', [
       'label' => 'Bilder',
-   ]);
+   ])
+   ->addFields($code);
 
-/*
-		Element
-	*/
 
+/**
+ * Elemente
+ */
 $element = new StoutLogic\AcfBuilder\FieldsBuilder('element');
 $element
    ->addFields($options)
-   ->addField('code', 'acf_code_field', [
-      'label' => 'HTML',
-      'placeholder' => '',
-      'default_value' => '<!--content-->',
-   ])
    ->addWysiwyg('content', [
       'label' => 'Inhalt',
       'tabs' => 'all',
       'toolbar' => 'full',
       'media_upload' => 1,
    ])
-   ->addSelect('elements', [
-      'label' => 'Elementauswahl',
-      'multiple' => 1,
-      'ui' => 1,
-   ]);
+   ->addRelationship('element', [
+      'label' => 'Element',
+      'post_type' => [0 => 'elemente'],
+      'taxonomy' => '',
+      'filters' => [0 => 'search'],
+      'return_format' => 'id',
+   ])
+   ->addFields($code);
 
-/*
-		Ansprechpartner
-	*/
-
+/**
+ * Ansprechpartner
+ */
 $ansprechpartner = new StoutLogic\AcfBuilder\FieldsBuilder('ansprechpartner');
 $ansprechpartner
    ->addFields($options)
-   ->addField('code', 'acf_code_field', [
-      'label' => 'HTML',
-      'placeholder' => '',
-      'default_value' => '<!--content-->',
-   ])
+   ->removeField('title')
+   ->removeField('redaktionell')
    ->addRelationship('ansprechpartner', [
       'label' => 'Ansprechpartner',
       'post_type' => [0 => 'ansprechpartner'],
       'taxonomy' => '',
       'filters' => [0 => 'search'],
       'return_format' => 'id',
-   ]);
+   ])
+   ->addFields($code);
 
-/*
-		Builder
-	*/
 
+/**
+ * Builder Assembly
+ */
 $builder = new StoutLogic\AcfBuilder\FieldsBuilder('builder', [
    'title' => 'Builder',
    'style' => 'seamless',
@@ -174,7 +205,7 @@ $builder
    ])
 
    ->addLayout('html', [
-      'label' => 'Inhaltsfeld',
+      'label' => 'Inhalt',
    ])
    ->addFields($content)
 
@@ -187,6 +218,11 @@ $builder
       'label' => 'Element',
    ])
    ->addFields($element)
+
+   ->addLayout('sektion', [
+      'label' => 'Sektion',
+   ])
+   ->addFields($sektion)
 
    ->addLayout('ansprechpartner', [
       'label' => 'Ansprechpartner',

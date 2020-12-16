@@ -1,13 +1,68 @@
 #header {
-   z-index: 2;
-}
+   position: fixed;
+   z-index: 999;
+   top: 15px;
+   left: 15px;
+   right: 15px;
+   transition: 0.5s all;
 
-#navbar.position-sticky {
-   top: 1.5rem;
-   height: 0;
-   padding-top: 0;
-   z-index: 100;
-   position: relative;
+   & > .row {
+      max-width: 1180px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 10px;
+      padding-right: 10px;
+      flex-wrap: nowrap;
+
+      @include media-breakpoint-down(sm) {
+         & > * {
+            margin-top: -10px;
+         }
+      }
+
+      #logo {
+         text-align: center;
+         width: 100%;
+         max-width: 5em;
+         margin-top: -10px;
+         padding-left: 0;
+
+         @include media-breakpoint-up(md) {
+            max-width: 7em;
+            padding-left: 10px;
+         }
+         
+         img {
+            width: 100%;
+            transition: 0.5s all;
+         }
+      }
+   }
+
+   &:hover, &.is-hover, .scrolled & {
+      background: #000 url('../images/wall.jpg') repeat-x top;
+   }
+
+   .scrolled & {
+      top: 0;
+      margin-top: -8px;
+
+      & > .row {
+
+         #logo {
+            margin-top: -5px;
+   
+            img {
+               width: 2.6em;
+            }
+         }
+   
+         .border-button {
+            border-color: transparent;
+            padding: 0;
+         }
+      }
+   }
 }
 
 h1 .logo img {

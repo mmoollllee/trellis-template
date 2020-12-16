@@ -109,7 +109,12 @@
    }
 }
 
-/* deli specific */
-[data-layout='Unterbrechung'] [data-name='aktiv'] {
-   display: none !important;
+/**
+ * Limit WYSIWYG height
+ */
+.textarea-small {
+   iframe, textarea {
+      height: 100px;
+      min-height: 100px !important;
+   }
 }

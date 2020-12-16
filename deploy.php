@@ -13,7 +13,8 @@ require 'vendor/mmoollllee/bedrock-deployer/recipe/sage.php';
 require 'vendor/mmoollllee/bedrock-deployer/recipe/trellis.php';
 
 // Configuration
-set('bin/composer', function () { return 'composer'; });
+set('bin/composer', function () { return '/usr/bin/php7.3-cli ~/composer.phar'; });
+// set('bin/composer', function () { return '/usr/bin/php7.3-cli ~/composer.phar'; });
 
 // Common Deployer config
 set( 'repository', 'git@github.com:vendor/example.com.git' );
@@ -68,8 +69,8 @@ task( 'deploy', [
 	'bedrock:env',
 	'bedrock:vendors',
 	'deploy:clear_paths',
-  'push:db',
-	'push:files',
+	'push:db',
+	'push:files-no-bak',
 	'deploy:unlock',
 	'cleanup',
 	'success',
@@ -94,7 +95,7 @@ task( 'push', [
 ] );
 
 task( 'pull', [
-  'pull:db',
+	'pull:db',
 	'pull:files',
 ] );
 

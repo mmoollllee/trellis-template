@@ -1,54 +1,32 @@
 <?php
-$aktiv = get_sub_field('aktiv');
-$content = str_replace(
-   '<!--title-->',
-   get_sub_field('title'),
-   get_sub_field('content')
-);
+	$h = $hierarchie + 3;
+	$layout_map = [
+		'full' => 'col-12',
+		'50-50' => 'col-12 col-md-6',
+		'1-3' => 'col-12 col-md-4',
+		'2-3' => 'col-12 col-md-8'
+	];
+	$layout = $layout_map[get_sub_field("layout")];
+	$code = sort_parts(get_sub_field('code'), $content, $title);
 
-if ($aktiv) {
-   $code = str_replace(
-      '<!--title-->',
-      get_sub_field('title'),
-      get_sub_field('code')
-   );
+?>
 
-   $code = preg_split('/(<!--content-->|<!--childs-->)/', $code);
-   preg_match_all(
-      '/(<!--content-->)|(<!--childs-->)/',
-      get_sub_field('code'),
-      $matches,
-      PREG_PATTERN_ORDER
-   );
-
-   $close[$hierarchie] = '';
-
-   $return .= $loopin;
-   $return .= $code[0];
-
-   if (isset($matches[0][0]) && isset($matches[0][1])) {
-      if (
-         $matches[0][0] == '<!--content-->' &&
-         $matches[0][1] == '<!--childs-->'
-      ) {
-         $return .= $content;
-         $return .= $code[1];
-         $close[$hierarchie] .= $code[2];
-      } elseif (
-         $matches[0][0] == '<!--childs-->' &&
-         $matches[0][1] == '<!--content-->'
-      ) {
-         $close[$hierarchie] .= $code[1];
-         $close[$hierarchie] .= $content;
-         $close[$hierarchie] .= $code[2];
-      }
-   } else {
-      $return .= $content;
-      if (isset($code[1])) {
-         $close[$hierarchie] .= $code[1];
-      }
-   }
-
-   $close[$hierarchie] .= $loopout;
-}
+<?php 
+	if (isset($code['close']) && !empty($code['close'])) {
+		echo $code['return'];
+		echo '<!--childs-->';
+?>
+<?php
+		echo $code['close'];
+	} else {
+?>
+	<div class="<?php the_classes(['content', $layout]); ?>">
+		<?php echo $slug ? '<div class="anchor" id="'.$slug.'"></div>' : ''; ?>
+		<?php if (!$has_title && $title) { ?><h3><!--title--></h3><?php } ?>
+		<div class="inner">
+			<!--content-->
+		</div>
+	</div>
+<?php
+	}
 ?>

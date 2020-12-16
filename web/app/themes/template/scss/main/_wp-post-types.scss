@@ -1,0 +1,42 @@
+.post-type-archive {
+   #header-breadcrumb {
+      display: block !important
+   }
+
+   article.post {
+      margin-bottom: 2em;
+
+      &>.icon-list-ol {
+         margin-left: 3.5em;
+         &:before {
+            font-size: 1.5em;
+            padding-right: 0.7em;
+            color: $grey-dark;
+         }
+      }
+   }
+}
+
+.pagination {
+   justify-content: center;
+
+   * {
+      padding: 0.2em 0.5em 0.3em;
+      background: #007bc2;
+      color: #fff;
+      margin: 0 0.1em
+   }
+
+   a {
+      transition: 0.3s;
+
+      &:hover {
+         background: $dark-blue
+      }
+   }
+
+   span {
+      background: $grey-ligt;
+      color: #000;
+   }
+}

@@ -1,6 +1,0 @@
-<?php
-
-  function dotdotdot_enqueue() {
-    wp_enqueue_script( 'dotdotdot-script', get_template_directory_uri() . '/vendor/dotdotdot/dotdotdot.js', array('jquery'), false, true );
-  }
-add_action( 'wp_enqueue_scripts', 'dotdotdot_enqueue' );

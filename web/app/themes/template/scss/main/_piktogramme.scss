@@ -1,0 +1,103 @@
+[class*="piktogramm-"] {
+   padding-left: 2em !important;
+   padding-top: .5em !important;
+   padding-bottom: .5em !important;
+   font-weight: initial !important;
+   color: #000 !important;
+   &:before {
+      content: "" !important;
+      padding: 0 !important;
+      position: absolute;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      width: 3.5em;
+      height: 3.5em;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      left: 0;
+      top: 0 !important;
+      margin-left: -2em !important;
+   }
+
+   h4 {
+      margin-bottom: 0;
+   }
+
+   p a {
+      text-decoration: none !important;
+      color : #000;
+
+      &:hover {
+         color: $primary
+      }
+
+      span {
+         font-weight: 600;
+      }
+   }
+}
+ 
+.piktogramm-maschine:before {
+   background-image: url('/app/uploads/2017/07/Maschine.svg')
+}
+
+.piktogramm-roboter:before {
+   background-image: url('/app/uploads/2017/07/Roboter.svg')
+}
+
+.piktogramm-kuehlkanal:before {
+   background-image: url('/app/uploads/2018/03/kuehlkanal.svg')
+}
+
+.piktogramm-laser:before {
+   background-image: url('/app/uploads/2018/03/laser.svg')
+}
+
+.piktogramm-durchmesser:before {
+   background-image: url('/app/uploads/2020/11/Durchschnitt.svg')
+}
+
+.piktogramm-drehzahl:before {
+   background-image: url('/app/uploads/2020/11/Drehzahl-Tacho.svg')
+}
+
+.piktogramm-achtung:before {
+   background-image: url('/app/uploads/2020/11/Achtung.svg')
+}
+
+.piktogramm-gewicht:before {
+   background-image: url('/app/uploads/2020/11/Gewicht-2.svg')
+}
+
+.piktogramm-hsk:before {
+   background-image: url('/app/uploads/2020/11/HKS.svg')
+}
+
+.piktogramm-rundtisch:before {
+   background-image: url('/app/uploads/2017/07/Rundtische.svg')
+}
+
+.piktogramm-spannmittel:before {
+   background-image: url('/app/uploads/2017/07/Spannmittel.svg')
+}
+
+.piktogramm-drehdurchfuehrung:before {
+   background-image: url('/app/uploads/2017/07/Drehdurchfuehrung.svg')
+}
+
+.piktogramm-messtaster:before {
+   background-image: url('/app/uploads/2020/11/Messen.svg')
+}
+
+.piktogramm-lueftung:before {
+   background-image: url('/app/uploads/2017/07/Absauganlagen.svg')
+}
+
+.piktogramm-kuehlmitteltanks:before {
+   background-image: url('/app/uploads/2017/07/Kuehlmitteltanks-Spaenefoerderer.svg')
+}
+
+.piktogramm-sonstige:before {
+   background-image: url('/app/uploads/2017/07/Sonstige-Optionen.svg')
+}

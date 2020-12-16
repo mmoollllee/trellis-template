@@ -108,31 +108,63 @@ $acfbuilder = new StoutLogic\AcfBuilder\FieldsBuilder('kontaktdaten', [
    'position' => 'normal',
 ]);
 $acfbuilder
-   ->addWysiwyg('kontaktdaten_1', [
-      'label' => 'Kontaktdaten 1',
-      'instructions' => 'Name & Anschrift',
-      'media_upload' => 0,
-      'toolbar' => 'basic',
+   ->addText('firma', [
+      'label' => 'Name',
+      'instructions' => 'z.B. Firmenname',
+      'wrapper' => [
+         'width' => '34',
+      ],
+   ])
+   ->addText('telefon-nice', [
+      'label' => 'Telefonnummer',
+      'instructions' => 'Im gewünschten Ausgabeformat',
       'wrapper' => [
          'width' => '33',
       ],
    ])
-   ->addWysiwyg('kontaktdaten_2', [
-      'label' => 'Kontaktdaten 2',
-      'instructions' => 'Telefon, Fax (wenn nötig) und Email',
-      'media_upload' => 0,
-      'toolbar' => 'basic',
+   ->addText('telefon-href', [
+      'label' => 'Telefonnummer',
+      'instructions' => 'Im Format <i>49-Vorwahl-Nummer</i>, ohne Leerzeichen,...',
+      'wrapper' => [
+         'width' => '33',
+      ],
+   ])
+   ->addEmail('mail', [
+      'label' => 'Emailadresse',
+      'wrapper' => [
+         'width' => '34',
+      ]
+   ])
+   ->addText('fax-nice', [
+      'label' => 'Faxnummer',
+      'instructions' => 'Im gewünschten Ausgabeformat',
+      'wrapper' => [
+         'width' => '33',
+      ],
+   ])
+   ->addText('fax-href', [
+      'label' => 'Faxnummer',
+      'instructions' => 'Im Format <i>49-Vorwahl-Nummer</i>, ohne Leerzeichen,...',
+      'wrapper' => [
+         'width' => '33',
+      ],
+   ])
+   ->addTextarea('anschrift', [
+      'label' => 'Anschrift',
+      'instructions' => 'Straße & Nr, PLZ & Ort, Land',
+      'rows' => '2',
+      'new_lines' => 'br',
       'wrapper' => [
          'width' => '33',
       ],
    ])
    ->addWysiwyg('oeffnungszeiten', [
       'label' => 'Öffnungszeiten',
-      'instructions' => 'Is klar, oder?',
+      'instructions' => 'Mit allen künstlerischen Freiheiten',
       'media_upload' => 0,
       'toolbar' => 'basic',
       'wrapper' => [
-         'width' => '34',
+         'width' => '33',
       ],
    ])
 

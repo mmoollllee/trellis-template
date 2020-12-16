@@ -1,6 +1,92 @@
 var didLoadSortable = false
 
-function adjust(elements, offset, min, max) {
+jQuery(window).ready(function () {
+
+   textareaSmallRemoveInlineHeight();
+
+   jQuery('#acf-pagebuilder .values')
+      .find('.layout')
+      .each(function () {
+         mg_acf_title_insert(jQuery(this))
+
+         mg_acf_hierarchie(jQuery(this))
+
+         mg_acf_hide_fields(jQuery(this))
+
+         mg_acf_options(jQuery(this))
+
+         jQuery(this).addClass('-collapsed')
+      })
+
+   
+   if (typeof acf !== 'undefined') {
+      acf.add_action('ready', function ($el) {
+         jQuery('.mg_acf_span_title').on('click', function (e) {
+            jQuery(this).parent().find('.mg_acf_input_title').focusTextToEnd()
+         })
+
+         acf.add_action('append', function( $el ){
+            mg_acf_title_insert($el)
+
+            mg_acf_hierarchie($el)
+
+            mg_acf_options($el)
+
+            mg_acf_hide_fields($el)
+         });
+         
+
+         // jQuery('.block-editor-block-list__layout').arrive(
+         //    '.acf-builder-title .values .layout',
+         //    function () {
+         //       mg_acf_title_insert(jQuery(this))
+
+         //       mg_acf_hide_fields(jQuery(this))
+         //    },
+         // )
+
+         acf.add_action('sortstart', function( $el ){
+               console.log('sortstart');
+            if (!didLoadSortable) {
+               didLoadSortable = true
+
+               var sortableElement = jQuery('#acf-pagebuilder').find('.ui-sortable');
+
+               // fire sortable...
+               sortableElement.sortable('option', 'grid', [20, 10]);
+
+               // ... & action
+               sortableElement.on('sortactivate', function (event, ui) {
+                     console.log('sortactivate');
+                     ui.item.on('mousemove', function (event, x) {
+                        if (event.which == 1) {
+                           var gridSteps = 20;
+                           var dragLeftValue = parseInt(jQuery(this).css('left').replace(/px/g, ''));
+                           var dragMarginLeftValue = parseInt(Math.round(jQuery(this).css('margin-left').replace(/px/g, '')));
+                           var dragHierarchieValue = (dragLeftValue + dragMarginLeftValue) / gridSteps;
+                           
+                           var inputHierarchieValue = parseInt(jQuery(this).prev().find('.hierarchie input').val())
+
+                           if (dragHierarchieValue >= 0 && dragHierarchieValue <= inputHierarchieValue + 1) {
+                              ui.item.find('.hierarchie input').val(dragHierarchieValue)
+                           }
+                        }
+                     })
+
+                     ui.item.on('mouseup', function (event) {
+                        var newHierarchieValue = parseInt(ui.item.find('.hierarchie input').val());
+                        jQuery(this).attr({'data-hierarchie': newHierarchieValue,})
+                     })
+                  })
+            }
+         })
+
+      }, 100)
+   }
+})
+
+// Adjust Field size
+function inputAdjust(elements, offset, min, max) {
    // Initialize parameters
    offset = offset || 0
    min = min || 0
@@ -38,103 +124,6 @@ function adjust(elements, offset, min, max) {
    })
 }
 
-// Apply to our element
-//adjust(jQuery('.adjust'), 10, 100, 500);
-
-jQuery(window).ready(function () {
-   jQuery('#acf-pagebuilder .values')
-      .find('.layout')
-      .each(function () {
-         mg_acf_title_insert(jQuery(this))
-
-         mg_acf_hierarchie(jQuery(this))
-
-         mg_acf_hide_fields(jQuery(this))
-
-         mg_acf_options(jQuery(this))
-
-         jQuery(this).addClass('-collapsed')
-      })
-
-   setTimeout(function () {
-      jQuery('.mg_acf_span_title').on('click', function (e) {
-         jQuery(this).parent().find('.mg_acf_input_title').focusTextToEnd()
-      })
-      jQuery('#acf-pagebuilder .values').arrive('.layout', function () {
-         mg_acf_title_insert(jQuery(this))
-
-         mg_acf_hierarchie(jQuery(this))
-
-         mg_acf_options(jQuery(this))
-
-         mg_acf_hide_fields(jQuery(this))
-      })
-
-      jQuery('.block-editor-block-list__layout').arrive(
-         '.acf-builder-title .values .layout',
-         function () {
-            mg_acf_title_insert(jQuery(this))
-
-            mg_acf_hide_fields(jQuery(this))
-         },
-      )
-
-      jQuery('.ui-sortable').on('sortstart', function (event, ui) {
-         console.log('sortabel')
-
-         if (!didLoadSortable) {
-            jQuery('#acf-pagebuilder')
-               .find('.ui-sortable')
-               .sortable('option', 'grid', [20, 10])
-            didLoadSortable = true
-
-            jQuery('#acf-pagebuilder')
-               .find('.ui-sortable')
-               .on('sortactivate', function (event, ui) {
-                  ui.item.on('mousemove', function (event, x) {
-                     if (event.which == 1) {
-                        var hiera =
-                           (parseInt(
-                              jQuery(this).css('left').replace(/px/g, ''),
-                           ) +
-                              parseInt(
-                                 Math.round(
-                                    jQuery(this)
-                                       .css('margin-left')
-                                       .replace(/px/g, ''),
-                                 ),
-                              )) /
-                           20 //
-
-                        if (
-                           hiera >= 0 &&
-                           hiera <=
-                              parseInt(
-                                 jQuery(this)
-                                    .prev()
-                                    .find('.hierarchie input')
-                                    .val(),
-                              ) +
-                                 1
-                        ) {
-                           ui.item.find('.hierarchie input').val(hiera)
-                        }
-                     }
-                  })
-
-                  ui.item.on('mouseup', function (event) {
-                     jQuery(this).attr({
-                        'data-hierarchie': parseInt(
-                           ui.item.find('.hierarchie input').val(),
-                        ),
-                     })
-                  })
-               })
-         }
-      })
-   }, 100)
-})
-
 function mg_acf_title_insert(e) {
    e = jQuery(e)
    titleinput = e.find('.title input')
@@ -166,7 +155,7 @@ function mg_acf_title_insert(e) {
          .val(jQuery(this).val())
    })
 
-   adjust(jQuery('.adjust'), 10, 100, 500)
+   inputAdjust(jQuery('input.adjust'), 10, 100, 500)
 }
 
 function mg_acf_options(e) {
@@ -240,3 +229,8 @@ function mg_acf_hide_fields(e) {
       return this
    }
 })(jQuery)
+
+
+function textareaSmallRemoveInlineHeight() {
+   jQuery('.textarea-small').find('textarea').removeAttr('style');
+}

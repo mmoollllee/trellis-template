@@ -1,139 +1,34 @@
-/*
- * The Typekit service used to deliver this font or fonts for use on websites
- * is provided by Adobe and is subject to these Terms of Use
- * http://www.adobe.com/products/eulas/tou_typekit. For font license
- * information, see the list below.
- *
- * acumin-pro:
- *   - http://typekit.com/eulas/00000000000000003b9acaf7
- *   - http://typekit.com/eulas/00000000000000003b9acaf4
- *   - http://typekit.com/eulas/00000000000000003b9acaf5
- *   - http://typekit.com/eulas/00000000000000003b9acaf6
- *   - http://typekit.com/eulas/00000000000000003b9acafa
- *   - http://typekit.com/eulas/00000000000000003b9acafb
- * sirenne-text-mvb:
- *   - http://typekit.com/eulas/00000000000000003b9b4404
- *   - http://typekit.com/eulas/00000000000000003b9b4406
- *
- * © 2009-2020 Adobe Systems Incorporated. All Rights Reserved.
- */
-/*{"last_published":"2020-08-13 07:57:34 UTC"}*/
-
-@import url('https://p.typekit.net/p.css?s=1&k=oyc5jkv&ht=tk&f=26056.26058.26059.26062.26063.26064.44744.44746&a=749018&app=typekit&e=css');
-
-@font-face {
-   font-family: 'acumin-pro';
-   src: url('https://use.typekit.net/af/aa5b59/00000000000000003b9acaf7/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-         format('woff2'),
-      url('https://use.typekit.net/af/aa5b59/00000000000000003b9acaf7/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-         format('woff'),
-      url('https://use.typekit.net/af/aa5b59/00000000000000003b9acaf7/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
-         format('opentype');
-   font-display: swap;
-   font-style: italic;
-   font-weight: 400;
+@font-face{
+font-family:"DINWeb";
+font-weight: 800;
+src:url("../fonts/1448030/70c039e2-a852-4547-ad98-6b79af5b6dbd.eot?#iefix");
+src:url("../fonts/1448030/70c039e2-a852-4547-ad98-6b79af5b6dbd.eot?#iefix") format("eot"),
+url("../fonts/1448030/c87b04a3-9f95-452b-8890-ead7afa50ab7.woff2") format("woff2"),
+url("../fonts/1448030/b2cf66d4-5fbe-4a96-8e55-590824de9b1c.woff") format("woff"),
+url("../fonts/1448030/eee3d2a5-e04d-45e0-b9e0-fb31cf21e8bc.ttf") format("truetype"),
+url("../fonts/1448030/7daab314-2a76-4a8e-aed9-6b443f3c9f8e.svg#7daab314-2a76-4a8e-aed9-6b443f3c9f8e") format("svg");
+font-display: swap;
 }
-
-@font-face {
-   font-family: 'acumin-pro';
-   src: url('https://use.typekit.net/af/a2c82e/00000000000000003b9acaf4/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-         format('woff2'),
-      url('https://use.typekit.net/af/a2c82e/00000000000000003b9acaf4/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-         format('woff'),
-      url('https://use.typekit.net/af/a2c82e/00000000000000003b9acaf4/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
-         format('opentype');
-   font-display: swap;
-   font-style: normal;
-   font-weight: 300;
+@font-face{
+font-family:"DINWeb";
+font-weight: 600;
+src:url("../fonts/1448154/8bb8c99f-3905-410f-8a60-2e69afdd440e.eot?#iefix");
+src:url("../fonts/1448154/8bb8c99f-3905-410f-8a60-2e69afdd440e.eot?#iefix") format("eot"),
+url("../fonts/1448154/a60723fa-4fcc-439f-a33a-ed694f63e1c0.woff2") format("woff2"),
+url("../fonts/1448154/35eddc75-3a69-46b8-8365-34c8ed41e4c1.woff") format("woff"),
+url("../fonts/1448154/54452f1e-3003-4554-80d5-4232a4a1b088.ttf") format("truetype"),
+url("../fonts/1448154/1dfe890f-6e95-4ede-9e16-7b9c2ce7f9b9.svg#1dfe890f-6e95-4ede-9e16-7b9c2ce7f9b9") format("svg");
+font-display: swap;
 }
-
-@font-face {
-   font-family: 'acumin-pro';
-   src: url('https://use.typekit.net/af/51b548/00000000000000003b9acaf5/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3')
-         format('woff2'),
-      url('https://use.typekit.net/af/51b548/00000000000000003b9acaf5/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3')
-         format('woff'),
-      url('https://use.typekit.net/af/51b548/00000000000000003b9acaf5/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3')
-         format('opentype');
-   font-display: swap;
-   font-style: italic;
-   font-weight: 300;
+@font-face{
+font-family:"DINWeb";
+font-weight: 400;
+src:url("../fonts/1448172/693936bd-1bbd-4194-98e9-352327aab9f9.eot?#iefix");
+src:url("../fonts/1448172/693936bd-1bbd-4194-98e9-352327aab9f9.eot?#iefix") format("eot"),
+url("../fonts/1448172/e89343d2-d818-4905-9ae9-96e007d470fc.woff2") format("woff2"),
+url("../fonts/1448172/bb6c668a-a395-4ae2-ace0-d9b79b6c9101.woff") format("woff"),
+url("../fonts/1448172/45e84ede-5e01-451a-9de0-6f8b4ed5e506.ttf") format("truetype"),
+url("../fonts/1448172/fb1f8413-ec85-4ff4-9855-0f1e48e584ce.svg#fb1f8413-ec85-4ff4-9855-0f1e48e584ce") format("svg");
+font-display: swap;
 }
-
-@font-face {
-   font-family: 'acumin-pro';
-   src: url('https://use.typekit.net/af/46da36/00000000000000003b9acaf6/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-         format('woff2'),
-      url('https://use.typekit.net/af/46da36/00000000000000003b9acaf6/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-         format('woff'),
-      url('https://use.typekit.net/af/46da36/00000000000000003b9acaf6/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-         format('opentype');
-   font-display: swap;
-   font-style: normal;
-   font-weight: 400;
-}
-
-@font-face {
-   font-family: 'acumin-pro';
-   src: url('https://use.typekit.net/af/027dd4/00000000000000003b9acafa/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3')
-         format('woff2'),
-      url('https://use.typekit.net/af/027dd4/00000000000000003b9acafa/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3')
-         format('woff'),
-      url('https://use.typekit.net/af/027dd4/00000000000000003b9acafa/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3')
-         format('opentype');
-   font-display: swap;
-   font-style: normal;
-   font-weight: 600;
-}
-
-@font-face {
-   font-family: 'acumin-pro';
-   src: url('https://use.typekit.net/af/133267/00000000000000003b9acafb/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3')
-         format('woff2'),
-      url('https://use.typekit.net/af/133267/00000000000000003b9acafb/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3')
-         format('woff'),
-      url('https://use.typekit.net/af/133267/00000000000000003b9acafb/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3')
-         format('opentype');
-   font-display: swap;
-   font-style: italic;
-   font-weight: 600;
-}
-
-@font-face {
-   font-family: 'sirenne-text-mvb';
-   src: url('https://use.typekit.net/af/7b3167/00000000000000003b9b4404/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-         format('woff2'),
-      url('https://use.typekit.net/af/7b3167/00000000000000003b9b4404/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-         format('woff'),
-      url('https://use.typekit.net/af/7b3167/00000000000000003b9b4404/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-         format('opentype');
-   font-display: swap;
-   font-style: normal;
-   font-weight: 400;
-}
-
-@font-face {
-   font-family: 'sirenne-text-mvb';
-   src: url('https://use.typekit.net/af/1b4077/00000000000000003b9b4406/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-         format('woff2'),
-      url('https://use.typekit.net/af/1b4077/00000000000000003b9b4406/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-         format('woff'),
-      url('https://use.typekit.net/af/1b4077/00000000000000003b9b4406/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
-         format('opentype');
-   font-display: swap;
-   font-style: normal;
-   font-weight: 700;
-}
-
-@font-face {
-   font-family: 'sirenne-text-mvb-roman-small';
-   src: url('https://use.typekit.net/af/f97246/00000000000000003b9b44fb/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-         format('woff2'),
-      url('https://use.typekit.net/af/f97246/00000000000000003b9b44fb/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-         format('woff'),
-      url('https://use.typekit.net/af/f97246/00000000000000003b9b44fb/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
-         format('opentype');
-   font-display: swap;
-   font-style: normal;
-   font-weight: 400;
-}
+@charset "UTF-8";

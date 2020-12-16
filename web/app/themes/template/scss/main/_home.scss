@@ -1,0 +1,43 @@
+body.home {
+   .usps p {
+      display: none
+   }
+
+   @include media-breakpoint-up(md) {
+      aside + .aktuelles {
+         order: -1
+      }
+   }
+
+   @include media-breakpoint-up(sm) {
+      address, .usps {
+         display: flex;
+         flex-wrap: wrap;
+         & > * {
+            flex-basis: 100%;
+         }
+
+         .kontakt,
+         .adresse {
+            flex-basis: 0;
+            flex-grow: 1;
+         }
+
+         .usp {
+            flex-basis: calc(50% - 1.5em);
+         }
+      }
+   }
+
+   @include media-breakpoint-up(md) {
+      address {
+         display: block;
+      }
+   }
+
+   @include media-breakpoint-up(lg) {
+      address {
+         display: flex;
+      }
+   }
+}

@@ -1,0 +1,73 @@
+.collapsible {
+   &.content {
+      margin-bottom: 3em;
+   }
+   
+   &.active .inner {
+      height: auto
+   }
+
+   &.preactive .inner {
+      height: auto !important
+   }
+
+   .inner {
+      overflow: hidden;
+
+      .inner {
+         overflow: visible;
+      }
+   }
+
+   .collapsible-button {
+      cursor: pointer;
+      display:block;
+      text-decoration: none;
+      color: $dark-blue;
+
+      &:not(h3) {
+         padding-top: .8em;
+      }
+
+      &.active {
+         padding-top: 0;
+      }
+
+      &:after {
+         transform: none;
+         top: .18em;
+         padding-left: 0.3em;
+         position: relative;
+      }
+   }
+
+   .category & {
+      .inner {
+         height: 22em;
+      }
+   }
+
+}
+
+
+h3.collapsible-button,
+h3 a {
+   &:after {
+      color: #000;
+      padding-left: 0;
+      top: 0.32em;
+   }
+}
+
+.content.collapsible .inner {
+  height: 10.4em;
+  overflow: hidden;
+}
+
+aside .collapsible>.inner {
+  height: 12em;
+}
+
+aside .partnerzubehoer.collapsible>.inner {
+  height: 9em;
+}

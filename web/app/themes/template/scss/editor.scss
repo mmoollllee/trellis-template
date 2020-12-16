@@ -17,7 +17,6 @@
 
 @import 'main/extentions/iframe-privacy';
 @import 'main/extentions/cookie';
-@import 'main/extentions/flickity';
 @import 'main/extentions/fancybox';
 @import 'main/extentions/icons';
 
@@ -46,7 +45,7 @@
    }
 }
 
-/* 
+/**
  * Main column width
  * This changes it from the default 580px to 720px
  */
@@ -54,10 +53,10 @@
    max-width: 80% !important;
 }
 
-/* 
-* Width of "wide" blocks
-* This changes it from the default 1080px to 1280px
-*/
+/** 
+ * Width of "wide" blocks
+ * This changes it from the default 1080px to 1280px
+ */
 .wp-block[data-align='wide'] {
    max-width: 90% !important;
 }

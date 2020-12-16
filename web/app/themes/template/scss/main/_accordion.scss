@@ -1,0 +1,64 @@
+.accordion {
+   & > h2,
+   & > h3 {
+      &:after {
+         @extend %icon-font-stuff;
+         content: "";
+         color: #000;
+         font-size: 1.3em;
+         top: auto;
+         transform: none;
+         padding: 0;
+      }
+   }
+}
+
+@include media-breakpoint-down(s) {
+   .accordion {
+      &.collapsible {
+         .inner {
+            overflow: visible !important;
+            height: auto !important
+         }
+
+         .collapsible-button {
+            display: none
+         }
+      }
+
+      & > * {
+         display: none;
+         opacity: 0;
+         transition: all;
+      }
+
+      & > h2,
+      & > h3 {
+         cursor: pointer;
+         display: block;
+         opacity: 1;
+
+         &:hover {
+            color: $secondary;
+         }
+
+         &:after {
+            content: "e";
+         }
+      }
+
+      &.active {
+         & > * {
+            display: block;
+            opacity: 1
+         }
+
+         & > h2,
+         & > h3 {
+            &:after {
+               content: "d";
+            }
+         }
+      }
+   }
+}

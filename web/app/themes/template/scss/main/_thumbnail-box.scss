@@ -1,0 +1,56 @@
+.thumbnail-box {
+   position: relative;
+   height: 19em;
+
+   &, * {
+      hyphens: none;
+      -webkit-hyphens: none;
+      -moz-hyphens: none;
+      -ms-hyphens: none;
+   }
+
+   .thumbnail {
+      display: block;
+      height: 13em;
+
+      &.logo {
+         img {
+            padding: 10% 5%;
+         }
+      }
+
+      img {
+         height: 100%;
+         width: 100%;
+         max-width: initial;
+         object-fit: contain;
+      }
+   }
+
+   p {
+      margin-bottom: 0;
+   }
+
+   & .fraesen,
+   & .schleifen {
+      .labels {
+         position: absolute;
+         top: 43%;
+         left: 10%
+      }
+   }
+
+   & .haeberle-baukasten,
+   & .software {
+      .thumbnail {
+         height: 9em;
+      }
+   }
+
+}
+
+
+.page-template-page-produkte .thumbnail-box {
+   /* margin-top: 3.5em; */
+   margin-bottom: 3em
+ }

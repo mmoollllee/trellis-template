@@ -1,0 +1,57 @@
+.breadcrumb-trail {
+   flex-basis: 100%;
+   max-width: 100%;
+   font-size: 0.85rem;
+   padding-top: 10px;
+   padding-bottom: 15px;
+   color: #fff;
+   font-size: .85em;
+
+   .trail-items {
+      padding: 0;
+      margin-bottom: 0;
+
+      & > * {
+         display: inline-block;
+      }
+
+      a {
+         text-decoration: none;
+         transition: 0.3s;
+         color: inherit;
+
+         &:hover {
+            text-decoration: underline
+         }
+      }
+
+      .trail-item {
+         position: relative;
+         margin-right: 1.3em;
+         &:after {
+            content: 'c';
+            left: 100%;
+            bottom: -.4em;
+            @extend %icon-font-stuff;
+         }
+      }
+
+      .trail-begin {
+         margin-right: 1.5em;
+         &:after {
+            content:'g';
+            left: 0;
+         }
+         a span {
+            font-size: 0;
+         }
+      }
+
+      .trail-end {
+         font-size: .85em;
+         &:after {
+            content: none;
+         }
+      }
+   }
+}

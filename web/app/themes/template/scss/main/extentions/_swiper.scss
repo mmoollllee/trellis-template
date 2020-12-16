@@ -1,0 +1,41 @@
+[class^="swiper-button"] {
+   &:after {
+      @extend %icon-font-stuff;
+      text-shadow: #00000047 0 0 10px;
+   }
+   &.swiper-button-next {
+      right: 0;
+      &:after {
+         content: "c"
+      }
+   }
+   &.swiper-button-prev {
+      left: 0;
+      &:after {
+         content: "b"
+      }
+   }
+}
+
+.swiper-button-disabled {
+   display: none !important
+}
+
+.swiper-container {
+   &.gallery, &.images.with-video {
+      .swiper-slide {
+         width: auto;
+         
+         a {
+            display: inherit
+         }
+         img {
+            width: auto;
+         }
+      }
+   }
+}
+
+.swiper-scrollbar + .swiper-wrapper {
+   padding-bottom: 20px;
+}

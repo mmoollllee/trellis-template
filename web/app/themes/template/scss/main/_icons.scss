@@ -1,0 +1,98 @@
+[data-icon]:before {
+  @extend %icon-font-stuff;
+  position: relative;
+  top: 0;
+  content: attr(data-icon);
+}
+
+[data-icon-right]:after {
+  @extend %icon-font-stuff;
+  content: attr(data-icon-right);
+}
+
+[data-icon-left]:before {
+  @extend %icon-font-stuff;
+  content: attr(data-icon-left);
+}
+
+[class^="icon-"], [class*=" icon-"], [data-icon-left], .button {
+  position: relative;
+  margin-left: 2em;
+  &:before {
+    @extend %icon-font-stuff;
+    margin-right: 100%;
+    right: 0;
+  }
+}
+
+[data-icon-right] {
+   position: relative;
+   margin-right: 2em;
+}
+
+
+.untertitel nav a::after,
+.breadcrumbs .trail-item:not(.trail-begin):not(.trail-end)::after,
+.button::before,
+.content ul li::before,
+.collapsible-button::after,
+.slider-step-list li::after {
+   @extend %icon-font-stuff;
+}
+
+.untertitel nav a:after,
+h3.collapsible-button:after {
+  content: "e"
+}
+
+.icon-bars:before {
+  margin-top: .07em;
+}
+
+[data-icon-left="h"]:before,
+.icon-home:before {
+  margin-top: .14em;
+}
+
+[data-icon-left="h"]:before {
+  font-size: 1.2em;
+}
+
+[data-icon-left="H"]:before {
+  bottom: -.02em;
+}
+
+.icon-home:before {
+  top: 0;
+  transform: none;
+  margin-top: .14em;
+}
+
+.icon-mail:before {
+  margin-top: .19em;
+}
+
+.icon-right:before,
+[data-icon-left]:before,
+[data-icon-right]:after {
+  margin-top: .17em;
+}
+
+ul li a[class*="icon"] {
+  display: block;
+  margin-left: 1.4em;
+
+  &:before {
+    top: .1em;
+    transform: none;
+  }
+}
+ 
+.pala-i, .pala-a {
+  font-family: icon-font;
+  width: 1em;
+  margin-left: -0.3em;
+  font-size: .9em;
+  display: inline-block;
+  vertical-align: -8%;
+}

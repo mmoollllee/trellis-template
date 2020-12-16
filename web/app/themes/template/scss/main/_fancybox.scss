@@ -1,0 +1,11 @@
+.fancybox-image[src$='.png'] {
+   background-color: #fff !important;
+}
+
+.fancybox-container .fancybox-video.d-none {
+   display: block !important;
+}
+
+.fancybox-slide--html > .fancybox-content {
+   overflow: initial !important;
+}

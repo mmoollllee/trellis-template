@@ -15,19 +15,32 @@
 @import 'main/utilities/font';
 @import 'main/utilities/layout';
 @import 'main/utilities/flex';
+@import 'main/utilities/position';
 
 @import 'main/extentions/iframe-privacy';
 @import 'main/extentions/cookie';
-@import 'main/extentions/flickity';
 @import 'main/extentions/fancybox';
 @import 'main/extentions/icons';
+@import 'main/extentions/breadcrumb';
+@import 'main/extentions/toggle';
+@import 'main/extentions/swiper';
 
-@import 'main/blocks';
+// @import 'main/blocks';
 @import 'main/font-import';
 @import 'main/font';
+@import 'main/icons';
+@import 'main/button';
 @import 'main/forms';
 @import 'main/layout';
+@import 'main/page-header';
 @import 'main/header';
 @import 'main/navigation';
 @import 'main/footer';
 @import 'main/table';
+@import 'main/collapsible';
+@import 'main/accordion';
+@import 'main/wp-post-types';
+@import 'main/thumbnail-box';
+@import 'main/titel';
+@import 'main/home';
+@import 'main/piktogramme';

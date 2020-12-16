@@ -1,0 +1,150 @@
+.button {
+   line-height: 1.2;
+   padding: 1em 0;
+   color: $secondary;
+   font-weight: 800;
+   display: inline-block;
+   background: none;
+   border: 0;
+   cursor: pointer;
+   text-align: left;
+   transition: 0.3s;
+
+   &:before {
+      font-size: 1.9em;
+      content: "c";
+      transition: 0.3s;
+   }
+
+   &[data-icon-left]:before {
+      content: attr(data-icon-left);
+      font-size: 1.2em;
+      transform: translate(-.5em, -50%);
+      color: inherit
+   }
+
+   &:before,
+   .second-line {
+      color: #000;
+      font-weight: 400
+   }
+
+   &:hover {
+      color: $light-blue;
+      text-decoration: none;
+
+      &:before {
+         transform: translate(7px, -50%);
+      }
+
+      &[data-icon-left]:before {
+         transform: translate(-.1em, -50%);
+      }
+   }
+}
+
+.border-button {
+   border: 1px solid #fff;
+   padding: 0.5em;
+   transition: 0.5s border-color, 0.5s padding;
+   font-size: 0.9em;
+
+   &:hover {
+      a {
+         color: inherit;
+         &:before {
+            transform: translate(3px, -50%);
+         }
+      }
+   }
+}
+ 
+.cta {
+   color: #fff;
+   background: $secondary;
+   display: block;
+   text-align: center;
+   margin-right: 10px;
+   padding: 0.5em;
+   font-weight: 800;
+   transition: 0.3s;
+   cursor: pointer;
+
+   &:hover {
+         background: $dark-blue;
+         color: #fff;
+   }
+}
+
+.tel {
+   font-weight: 600;
+   font-size: 1.4em;
+   color: $secondary;
+   display: block;
+   margin-left: 1.5em;
+   margin-top: .5em;
+
+   &:hover {
+      color: $light-blue
+   }
+}
+
+
+// .button,
+// input[type='submit'] {
+//    padding: 1em 0;
+//    font-size: 1em;
+//    font-weight: 800;
+//    clear: both;
+//    color: $primary;
+//    text-decoration: none;
+//    position: relative;
+//    margin-left: 2em;
+//    cursor: pointer;
+//    border: 0 none;
+//    line-height: 1.2;
+//    -webkit-appearance: none;
+//    outline: none !important;
+//    display: inline-block;
+//    text-align: left;
+//    vertical-align: middle;
+//    background: transparent;
+//    li& {
+//       margin: 0;
+//    }
+//    &:hover {
+//       color: var(--secondary);
+//       transition: 0.3s;
+//       a {
+//          color: inherit;
+//       }
+
+//       &:before {
+//          margin-right: 95%;
+//          transition: 0.3s;
+//       }
+//    }
+//    .off-bottom {
+//       margin-top: -2rem;
+//    }
+//    a {
+//       padding: 0 !important;
+//       margin: 0;
+//    }
+//    &:first-of-type {
+//       margin-left: 0;
+//    }
+// }
+
+// input[type='submit'] {
+//    transition: background-color 0.4s;
+//    border: 0 none;
+//    background: $primary;
+//    color: #fff;
+//    float: right;
+//    margin-top: -3rem;
+//    &:hover {
+//       background: $secondary;
+//    }
+// }
+

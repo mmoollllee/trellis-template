@@ -3,14 +3,12 @@
 .layout[data-redaktionell='false'] .acf-icon,
 .layout[data-redaktionell='false'] .acf-icon-copy,
 .layout[data-redaktionell='false'] .acf-icon-clone {
-   display: none !important;
-}
+  display: none !important; }
 
 .layout[data-redaktionell='false'] > .acf-fc-layout-handle {
-   border-bottom-width: 0 !important;
-   color: #fff !important;
-   cursor: auto !important;
-}
+  border-bottom-width: 0 !important;
+  color: #fff !important;
+  cursor: auto !important; }
 
 [data-name='redaktionell'],
 [data-name='code'],
@@ -19,9 +17,7 @@
 [data-name='lazyload'],
 [data-name='verlinken'],
 [data-name='imagesize'] {
-   display: none !important;
-}
+  display: none !important; }
 
 .acf-fc-layout-handle {
-   cursor: pointer;
-}
+  cursor: pointer; }
