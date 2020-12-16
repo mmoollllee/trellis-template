@@ -53,6 +53,15 @@
     $ dep pull <environemt>
     ```
 
+### PHP Settings
+
+PHP Settings can be changed in `trellis/group_vars/development/php.yml`. See [this blog-post by Jasper Frumau](https://imwz.io/custom-php-settings-in-trellis/).
+
+```yml
+php_memory_limit: 256M
+php_post_max_size: 256M
+php_upload_max_filesize: 256M
+```
 
 ### Updates
 
