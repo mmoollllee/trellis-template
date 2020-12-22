@@ -1,6 +1,6 @@
 ## Installation
 
-1. Create empty repository on GitHub and clone it to your local machine. Add a readme or something, because it should have one commit for the further steps.
+1. Create empty repository on GitHub and clone it to your local machine.
 2. Add [Trellis](https://github.com/roots/trellis) as subtree
     ```sh
     $ git remote add -f trellis https://github.com/roots/trellis.git
