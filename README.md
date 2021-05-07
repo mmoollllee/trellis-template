@@ -68,7 +68,7 @@ php_upload_max_filesize: 256M
 To update Wordpress:
 
 ```sh
-$ composer require johnpbloch/wordpress 5.2.x
+$ composer require roots/wordpress 5.7.x
 cd ../trellis && vagrant ssh
 $ wp core update-db
 ```
