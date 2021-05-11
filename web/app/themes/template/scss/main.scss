@@ -1,8 +1,9 @@
-@import 'bootstrap/functions';
-@import 'bootstrap/variables';
-@import 'bootstrap/mixins';
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
 
+// 2. Include any default variable overrides here
 @import 'main/variables';
+@import "../node_modules/bootstrap/scss/mixins";
 
 @import 'main/mixins/position';
 @import 'main/mixins/appearance';

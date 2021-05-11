@@ -11,7 +11,7 @@
          &:before {
             font-size: 1.5em;
             padding-right: 0.7em;
-            color: $grey-dark;
+            color: $dark;
          }
       }
    }
@@ -31,12 +31,12 @@
       transition: 0.3s;
 
       &:hover {
-         background: $dark-blue
+         background: $primary
       }
    }
 
    span {
-      background: $grey-ligt;
+      background: $light;
       color: #000;
    }
 }

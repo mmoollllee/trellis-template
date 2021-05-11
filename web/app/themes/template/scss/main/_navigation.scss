@@ -20,7 +20,7 @@
          text-decoration: none;
          color: inherit;
          transition: 0.3s all;
-         color: $light-blue;
+         color: $primary;
          font-weight: 800;
          position: relative;
          margin-right: 1em;
@@ -50,7 +50,7 @@
             }
 
             &:hover {
-               color: $grey
+               color: $gray
             }
          }
       }

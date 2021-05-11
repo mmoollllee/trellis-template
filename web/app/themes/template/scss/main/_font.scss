@@ -91,7 +91,7 @@ h2,
 
 h3,
 .h3 {
-   color: $dark-blue;
+   color: $primary;
    font-weight: 600;
    font-size: 1.5rem;
    margin-bottom: .8em;
@@ -104,7 +104,7 @@ h3,
       padding-top: 0;
 
       &:hover {
-         color: $dark-blue
+         color: $primary
       }
    }
       
@@ -128,7 +128,7 @@ h3,
 
 h4,
 .h4 {
-   color: $dark-blue;
+   color: $primary;
    font-size: 1.2rem;
    font-weight: 600;
    margin-bottom: .5em;
@@ -168,13 +168,13 @@ a {
    text-decoration: none;
 
    &:hover {
-      color: $grey
+      color: $gray
    }
 }
 
 p a:not([class]),
 a>small {
-  color: $grey;
+  color: $gray;
   text-decoration: underline;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -190,7 +190,7 @@ footer p a:not([class]) {
 small,
 .small {
    font-size: 90%;
-   color: $grey;
+   color: $gray;
    &[data-icon-left] {
      margin-left: 1em 
    }

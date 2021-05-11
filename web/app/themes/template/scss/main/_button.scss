@@ -30,7 +30,7 @@
    }
 
    &:hover {
-      color: $light-blue;
+      color: $light;
       text-decoration: none;
 
       &:before {
@@ -71,7 +71,7 @@
    cursor: pointer;
 
    &:hover {
-         background: $dark-blue;
+         background: $secondary;
          color: #fff;
    }
 }
@@ -85,7 +85,7 @@
    margin-top: .5em;
 
    &:hover {
-      color: $light-blue
+      color: $light
    }
 }
 

@@ -88,7 +88,7 @@ header + .bg-white {
 .page-id-2524 main {
    & > .category {
       &:nth-child(odd) {
-         background: $grey-ligt;
+         background: $light;
       }
       &:nth-child(even) {
          background: transparent;
@@ -115,7 +115,7 @@ img {
 
 aside .thumbnail {
    padding: 0.5em;
-   background: $grey-ligt; //#e9eaea
+   background: $light;
    text-align: center;
 
    img {
@@ -160,7 +160,7 @@ aside .thumbnail {
 
       li {
          font-weight: 600;
-         color: $dark-blue;
+         color: $primary;
          padding: 0.2em 0;
 
          &:before {

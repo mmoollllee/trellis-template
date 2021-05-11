@@ -48,7 +48,7 @@ input, button {
       cursor: pointer;
    
       &:hover {
-         background: $dark-blue;
+         background: $primary;
       }
    }
 }
@@ -131,7 +131,7 @@ input[name="fax"] {
 input[type='checkbox'] {
    background: none;
    appearance: none;
-   border: 1px solid $grey-dark;
+   border: 1px solid $dark;
    height: 1.1em;
    width: 1.1em;
    margin-left: 0.2rem;

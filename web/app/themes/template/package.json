@@ -23,9 +23,11 @@
       "eslint": "^7.11.0",
       "icon-font-generator": "github:Hammie/icon-font-generator",
       "node-sass": "^4.14.1",
-      "prettier": "2.1.2"
+      "prettier": "2.1.2",
+      "bootstrap": "^5.0.0"
    },
    "dependencies": {
+      "bootstrap": "^5.0.0",
       "cli-real-favicon": "0.0.8",
       "swiper": "^6.3.5"
    }
