@@ -96,7 +96,7 @@ task( 'push', [
 
 task( 'pull', [
 	'pull:db',
-	'pull:files',
+	'pull:files-no-bak',
 ] );
 
 // [Optional] if deploy fails automatically unlock.
